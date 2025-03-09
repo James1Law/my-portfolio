@@ -17,29 +17,11 @@ const About = () => {
         
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full md:w-1/3"
-          >
-            <div className="relative">
-              <div className="w-full h-80 bg-gray-300 rounded-lg overflow-hidden">
-                {/* Replace with your image */}
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  Your Photo Here
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-blue-600 rounded-lg -z-10"></div>
-            </div>
-          </motion.div>
-          
-          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="w-full md:w-2/3"
+            className="w-full"
           >
             <h3 className="text-2xl font-bold mb-4">Product Manager & UI/UX Enthusiast</h3>
             <p className="text-gray-600 mb-4">
@@ -72,7 +54,8 @@ const About = () => {
             
             <div className="mt-8">
               <motion.a
-                href="#contact"
+                href="/documents/james_law_resume.pdf"
+                download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
