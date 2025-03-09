@@ -27,7 +27,7 @@ const blogPosts = [
       
       <p>For anyone facing a similar crossroads, my advice is simple: listen to what truly matters to you. A successful career is important, but so is the life you build around it. Sometimes, the bravest decision isn't staying the course—it's having the courage to change it.</p>
     `,
-    date: "15th October 2019"
+    date: "15th June 2020"
   },
   {
     title: "From Bridge to Backlog",
