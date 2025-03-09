@@ -4,114 +4,128 @@ import { motion } from 'framer-motion';
 // Rename to blogPosts
 const blogPosts = [
   {
-    title: "How I Transitioned from Ship to Shore",
+    title: "Changing course: From ship to shore",
     category: "Career",
     image: "gray-300", // Replace with actual image
-    summary: "My journey from navigating vessels as a deck officer to navigating product decisions in maritime tech.",
+    summary: "Leaving the sea behind: My personal journey of choosing presence over progression and finding new purpose in product management.",
     content: `
-      <p>After spending 11 years at sea as a deck officer, I found myself increasingly drawn to the technological aspects of maritime operations. The transition from ship to shore wasn't always smooth sailing, but it's been an incredible journey.</p>
+      <p>For over a decade, the open sea was my home. As a Senior Officer of the Watch, I carried the weight of responsibility, ensuring the safe navigation of some of the world's largest passenger vessels. The role was demanding but fulfilling—every day was a test of skill, discipline, and decision-making. Whether sailing across vast oceans or maneuvering through congested ports, my job was to anticipate, adapt, and execute with precision.</p>
       
-      <h3>The Call to Change Course</h3>
-      <p>My maritime career began with a passion for the sea and a desire to explore the world. As a deck officer, I navigated vessels through challenging waters, managed crew operations, and ensured safety protocols were followed. However, I noticed a gap between the technology we used onboard and what was possible.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Maritime Career Path</h3>
+      <p>Progression at sea was structured and clear. With each passing year, I climbed the ranks, earning new certifications and increasing my responsibilities. The path ahead was set—Chief Officer, then Captain. Yet, despite the steady climb, something shifted in me.</p>
       
-      <p>The turning point came when I was involved in testing a new navigation system. I found myself more interested in how the software could be improved than in using it as is. This sparked my interest in product development and how technology could solve real maritime challenges.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Hidden Cost of Life at Sea</h3>
+      <p>Life at sea offers unique rewards, but it also comes with sacrifices. I spent months away from home, missing birthdays, weddings, and the simple joys of day-to-day life with friends and family. The isolation was part of the deal, but over time, I felt its weight more heavily. Calls home became moments of longing rather than connection. I realized that while I was excelling in my career, I was drifting further away from the people who mattered most.</p>
       
-      <h3>Navigating New Waters</h3>
-      <p>Transitioning to product management wasn't straightforward. I had to learn a new language – not of nautical terms, but of user stories, sprints, and MVPs. My maritime experience became my compass, helping me understand the needs of users who were just like my former colleagues at sea.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Making the Difficult Decision</h3>
+      <p>The decision to step away from a career I had spent my life building was not easy. Many of my colleagues couldn't understand why I would trade a promising maritime future for the unknown. But I knew it was time for a change. I wanted to be present—not just as a voice on a satellite call, but as a friend, a son, a partner.</p>
       
-      <p>I started by taking online courses in product management and software development fundamentals. Then I sought opportunities where my maritime expertise would be valued, landing my first role at a company developing solutions for the shipping industry.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Finding New Purpose Ashore</h3>
+      <p>Transitioning ashore meant reinventing myself. I had to take the leadership, problem-solving, and strategic thinking I had honed at sea and apply them to a new industry. I found my footing in product management—building solutions, leading teams, and navigating the complexities of technology. It was a different kind of challenge but one that resonated with me. The thrill of problem-solving remained, but now, I was working in an environment that allowed me to be surrounded by the people I had missed for so long.</p>
       
-      <h3>Bringing Maritime Knowledge Ashore</h3>
-      <p>What I discovered was that my years at sea weren't just relevant – they were invaluable. I could speak the language of both worlds: translating technical requirements for developers while deeply understanding the needs of maritime professionals.</p>
+      <p>Looking back, I have no regrets. The skills I developed at sea—discipline, resilience, and adaptability—have been invaluable in my new career. Changing course didn't mean abandoning my past; it meant using my experiences to carve a new path forward.</p>
       
-      <p>Today, I leverage my unique background to create products that truly address the challenges faced by those at sea. The perspective gained from standing watch on the bridge now helps me watch over product development with a keen eye for what really matters to maritime users.</p>
+      <p>For anyone facing a similar crossroads, my advice is simple: listen to what truly matters to you. A successful career is important, but so is the life you build around it. Sometimes, the bravest decision isn't staying the course—it's having the courage to change it.</p>
     `,
-    date: "October 15, 2023"
+    date: "15th October 2019"
   },
   {
-    title: "The Future of Maritime Technology",
-    category: "Industry Insights",
+    title: "From Bridge to Backlog",
+    category: "Career",
     image: "gray-300", // Replace with actual image
-    summary: "Exploring emerging technologies that are transforming the maritime industry and how they'll shape the future of shipping.",
+    summary: "Navigating my first months in product management",
     content: `
-      <p>The maritime industry is undergoing a technological revolution that promises to transform how ships operate, how crews work, and how the entire shipping ecosystem functions. Here's my perspective on what's coming next.</p>
+      <p>At the end of 2020, I found myself in unfamiliar waters—not on the bridge of a ship, but in the world of product management. After years of structured responsibilities at sea, I was now navigating a new landscape filled with terms like Agile, Scrum, and Kanban. These weren't navigational charts or shipboard protocols, but frameworks for managing work in a fast-paced, ever-changing environment.</p>
       
-      <h3>Autonomous Vessels: Reality or Hype?</h3>
-      <p>While fully autonomous ships have captured headlines, the reality is more nuanced. We're seeing a gradual evolution toward increased automation rather than an overnight revolution. Systems that assist navigation in congested waters, optimize route planning based on weather and traffic, and monitor engine performance are already being implemented.</p>
+      <p>I was a few months into my first product management role, and the learning curve was steep. I wasn't just managing a single project—I was juggling multiple initiatives, aligning with different stakeholders, and trying to understand how to deliver value effectively. In many ways, it reminded me of my time at sea—making high-stakes decisions with limited information, staying calm under pressure, and constantly adapting to new challenges.</p>
       
-      <p>Having navigated vessels manually through challenging conditions, I believe human oversight will remain crucial for the foreseeable future. The most promising approach is human-machine collaboration, where technology handles routine operations while seafarers manage exceptions and emergencies.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Agile, Scrum, and Kanban—Decoding the Buzzwords</h3>
+      <p>At first, Agile felt more like a philosophy than a process. The idea of iterating quickly, failing fast, and continuously improving was different from the meticulous planning I was used to in maritime operations. Scrum introduced the concept of working in sprints—short cycles of focused work with clear goals—while Kanban helped visualize workflows, keeping track of tasks and bottlenecks.</p>
       
-      <h3>Digital Twins and Predictive Maintenance</h3>
-      <p>One of the most exciting developments is the creation of "digital twins" – virtual replicas of physical vessels that simulate performance under various conditions. These models allow operators to predict maintenance needs before failures occur, optimizing vessel performance and reducing downtime.</p>
+      <p>I quickly realised that while these frameworks provided structure, they weren't rigid rules. Just as no two voyages are the same, no two teams work the same way. Learning to apply Agile principles in a way that suited my team was a challenge, but it was also where I found the most growth.</p>
       
-      <p>During my time at sea, unexpected equipment failures could lead to costly delays and potentially dangerous situations. The shift toward predictive rather than reactive maintenance represents a significant advancement in maritime operations.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Managing Stakeholders—A Different Kind of Crew</h3>
+      <p>Onboard a ship, leadership is clear-cut—the chain of command dictates who makes decisions. In product management, influence comes not from rank, but from collaboration and communication. I had to learn how to work with engineers, designers, sales teams, and clients, each with their own priorities and expectations.</p>
       
-      <h3>Connectivity and Crew Welfare</h3>
-      <p>Improved satellite connectivity is transforming life at sea. Beyond operational benefits, better connectivity addresses one of the biggest challenges of seafaring: isolation. Access to high-speed internet enables video calls with family, online education, and entertainment options that were unimaginable when I first went to sea.</p>
+      <p>One of the biggest lessons I learned early on was that managing stakeholders wasn't about keeping everyone happy—it was about aligning everyone around the right priorities. It required listening, negotiating, and sometimes making tough calls. The ability to assess risk, communicate clearly, and adapt quickly—skills I had honed at sea—proved to be just as valuable in this role.</p>
       
-      <p>As someone who spent months away from home, I can't overstate the impact this has on crew welfare and retention. The shipping companies that embrace these technologies will have a significant advantage in attracting and keeping talented seafarers.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Applying My Maritime Knowledge in a Tech World</h3>
+      <p>Despite the differences between my old and new career, I found surprising parallels. The structured decision-making of maritime operations helped me navigate complex business processes. My experience managing bridge teams translated into leading cross-functional teams. Even my ability to remain calm in high-pressure situations gave me an edge when handling tight deadlines and shifting priorities.</p>
+      
+      <p>Looking back, those early months were challenging but exhilarating. Every day was an opportunity to learn, to refine my approach, and to embrace a new way of thinking. I wasn't just learning how to manage products—I was learning how to adapt, a skill that had served me well throughout my career.</p>
+      
+      <p>Now, with a few years of product management under my belt, I can see how those early lessons shaped me. The journey from sea to tech was never going to be easy, but just like any voyage, it was all about setting the right course and adjusting as needed along the way.</p>
     `,
-    date: "January 8, 2024"
+    date: "20th December 2020"
   },
   {
-    title: "Bridging the Gap: What Developers Should Know About Maritime Users",
+    title: "Navigating the challenges of product management in maritime technology",
     category: "Product Development",
     image: "gray-300", // Replace with actual image
-    summary: "Insights for software developers on the unique needs and challenges of maritime professionals using their products.",
+    summary: "Learning what product development in maritime really means",
     content: `
-      <p>As someone who's stood on both sides of the divide – as a maritime professional using software and as a product manager helping develop it – I've seen firsthand the disconnect that can occur. Here's what developers should understand about creating software for maritime users.</p>
+      <p>When I transitioned into product management, I quickly learned that no two industries approach product development the same way. In tech-driven sectors, launching a product often means rapid iterations, fast feedback loops, and instant deployment. In maritime, the reality is quite different. Onboarding new customers isn't just about getting them to sign up—it's about overcoming logistical, technical, and operational barriers that don't exist in many other industries.</p>
       
-      <h3>Context Matters: The Maritime Environment</h3>
-      <p>Maritime software is often used in challenging environments: on bridges with glare from sunlight, in engine rooms with vibration and noise, or on vessels with limited connectivity. Interfaces that work perfectly in an office may be unusable at sea.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Maritime Moves at a Different Pace</h3>
+      <p>Unlike software products that can be instantly accessed via the cloud, maritime products often require installation on vessels that are constantly on the move. Some ships lack modern hardware, stable internet connections, or even the basic infrastructure to support new technology. Deploying a software update isn't as simple as pushing a release—it might involve sending USB drives to ports, working with onboard engineers to ensure compatibility, and scheduling updates months in advance.</p>
       
-      <p>I recall trying to use a newly installed system during rough weather in the North Sea. The small touch targets and complex menus that seemed intuitive in port became nearly impossible to navigate while bracing against the ship's motion. Simple, clear interfaces with large touch targets aren't just good design – they're essential for maritime applications.</p>
+      <p>Onboarding a new customer in maritime takes time. Vessels operate on strict schedules, and their priority is safe, efficient operation—not installing new software. Even when a product is ready to go, it might take weeks or months before every vessel in a fleet is equipped, trained, and fully operational.</p>
       
-      <h3>Connectivity Constraints</h3>
-      <p>Despite advances in maritime connectivity, bandwidth limitations and intermittent connections remain common challenges. Applications need to function offline and synchronize efficiently when connection is restored.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Unique Mix of B2B and B2C</h3>
+      <p>Product development in maritime isn't purely B2B or B2C—it's both. We sell software solutions to shipping companies, cruise lines, and vessel operators (B2B), but the end users are captains, officers, and crew members who interact with the product daily (B2C).</p>
       
-      <p>The most successful maritime applications I've worked with employ thoughtful data prioritization – ensuring critical information transfers first when bandwidth is limited, while deferring less urgent updates.</p>
+      <p>This means that even if we convince a company to buy our product, the job isn't done. A captain at sea, an operations manager in an office, and a regulatory compliance officer all have different expectations and pain points. Understanding these perspectives is crucial for ensuring adoption and long-term success. A product that makes life easier for shore-based managers but complicates onboard workflows is unlikely to succeed.</p>
       
-      <h3>Safety-Critical Operations</h3>
-      <p>Unlike many consumer applications, maritime software often supports safety-critical operations. A system crash during navigation in congested waters or while monitoring cargo conditions can have serious consequences.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Importance of Training and Adoption</h3>
+      <p>One of the biggest lessons I've learned is that technology alone doesn't solve problems—adoption does. In maritime, software isn't always intuitive for end users. Many officers and crew members are used to traditional ways of working and don't have time to learn a complicated new system while managing daily operations.</p>
       
-      <p>This reality demands exceptional reliability, clear error states, and graceful degradation when problems occur. Features like automatic saving, robust recovery mechanisms, and redundancy are not luxuries but necessities.</p>
+      <p>Rolling out a new product isn't just about deployment—it's about education. Training sessions, onboarding materials, and ongoing support are just as critical as the software itself. Without buy-in from the people using the product at sea, even the best-designed solution can fail.</p>
       
-      <h3>The Human Element</h3>
-      <p>Perhaps most importantly, developers should remember that maritime professionals often work long hours in challenging conditions. Cognitive load is a real concern when an officer has been on watch for hours during a busy port approach.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Developing Commercial Awareness</h3>
+      <p>Understanding these challenges has given me a deeper appreciation for the commercial realities of maritime product development. Unlike SaaS startups that can experiment freely, maritime companies need to be more deliberate. Sales cycles are longer, customer relationships are built over years, and new products must align with strict safety, compliance, and operational requirements.</p>
       
-      <p>The best maritime software reduces mental burden rather than adding to it. This means thoughtful automation, clear prioritization of information, and interfaces that require minimal training to operate effectively.</p>
+      <p>As a product manager, balancing these constraints with innovation is key. It's not just about building a great product—it's about making sure it works in the complex, high-stakes world of shipping. And that's what makes maritime product management so uniquely challenging—and rewarding.</p>
     `,
-    date: "March 22, 2024"
+    date: "4th November 2021"
   },
   {
-    title: "Product Management in Specialized Industries: Lessons Learned",
+    title: "Five years in product management: Lessons in efficiency, design, and leadership",
     category: "Career Development",
     image: "gray-300", // Replace with actual image
-    summary: "Key insights from my experience as a product manager in the maritime sector that apply to any specialized industry.",
+    summary: "Reflections on my journey from maritime operations to product management, sharing key lessons on time management, UI/UX design, and team leadership.",
     content: `
-      <p>Product management in a specialized industry like maritime technology comes with unique challenges and opportunities. Here are the key lessons I've learned that apply to product managers in any niche industry.</p>
+      <p>Five years ago, I took a leap from maritime operations into product management. It was a shift that required me to rethink how I worked—moving from structured, high-stakes navigation to the fast-paced, iterative world of product development. Looking back, I can see how much I've grown, not just in technical skills, but in leadership, efficiency, and team collaboration.</p>
       
-      <h3>Domain Expertise Is Your Superpower</h3>
-      <p>In specialized industries, domain knowledge isn't just helpful – it's transformative. My background as a deck officer has been invaluable in understanding user needs at a deep level. When users describe problems, I can visualize the context because I've lived it.</p>
+      <p>Here are the biggest lessons I've learned along the way.</p>
       
-      <p>If you're a product manager without industry experience, invest heavily in learning the domain. Spend time with users in their environment, learn the terminology, and understand the regulatory landscape. This knowledge will earn you credibility and lead to better product decisions.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Time Management is Everything</h3>
+      <p>In my early days as a Product Manager, I often felt pulled in multiple directions—stakeholder meetings, backlog refinement, sprint planning, user interviews, and roadmap updates. It took time to develop a system that worked, but now, efficiency is second nature.</p>
       
-      <h3>Translate Between Worlds</h3>
-      <p>One of the most valuable roles a product manager plays in specialized industries is that of translator. You need to convert user needs expressed in industry jargon into clear requirements for developers, while also explaining technical constraints to users in terms they understand.</p>
+      <p>Prioritization is key. Not everything needs to be done immediately. Learning to focus on high-impact tasks while delegating or deferring less critical ones has been crucial.</p>
+      <p>Time blocking works. I set aside deep-focus hours for strategic work, ensuring that meetings don't consume my entire day.</p>
+      <p>The "two-minute rule" is powerful. If something takes less than two minutes to complete, I do it immediately instead of letting small tasks pile up.</p>
+      <p>Mastering time management means I can spend more time driving value rather than firefighting distractions.</p>
       
-      <p>I've found that creating a shared vocabulary and using visual communication tools helps bridge this gap. Wireframes, user journey maps, and prototypes become even more important when working across knowledge domains.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">UI/UX Design: More Than Just Aesthetics</h3>
+      <p>Early in my career, I underestimated the role of design in product success. I saw UI/UX as something for designers to handle. But I quickly realized that a great user experience isn't just about visual appeal—it's about making products intuitive, efficient, and enjoyable to use.</p>
       
-      <h3>Balance Innovation with Tradition</h3>
-      <p>Specialized industries often have established ways of working that have evolved over decades or even centuries. The maritime industry has traditions dating back hundreds of years, and change can be met with resistance.</p>
+      <p>Users don't read, they scan. Clear information hierarchy and intuitive navigation are crucial for usability.</p>
+      <p>Less is more. Simplicity wins over complexity. Every additional feature, button, or input field should have a purpose.</p>
+      <p>Empathy drives design. Understanding user behavior and pain points is the foundation of good UX.</p>
+      <p>Over time, I've become proficient in UI/UX design principles, wireframing, and usability testing. This not only helps me collaborate better with designers but ensures that user experience is at the core of every product decision.</p>
       
-      <p>Successful product innovation respects these traditions while demonstrating clear value for new approaches. I've learned to introduce change incrementally, showing how new technology enhances rather than replaces valued skills and knowledge.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Leading from the Front: Empowering Development Teams</h3>
+      <p>One of the biggest shifts in my leadership style has been moving from directing to enabling. At sea, leadership often follows a chain of command, but in product management, success comes from empowering teams rather than controlling them.</p>
       
-      <h3>Regulatory Awareness Is Essential</h3>
-      <p>Many specialized industries are heavily regulated, and maritime is no exception. Understanding the regulatory environment is crucial for product success.</p>
+      <p>Autonomy leads to speed. A team that has all the context and trust to make decisions will move faster than one that needs constant approvals.</p>
+      <p>Communication beats micromanagement. My role is to provide clear goals, priorities, and insights—then let the development team solve problems their way.</p>
+      <p>Iterate fast, fail smart. Encouraging experimentation and learning from failures has helped build a culture of innovation rather than risk aversion.</p>
+      <p>A great product isn't built by a single person—it's the result of a well-aligned, motivated team working together. By leading with transparency and trust, I've seen first-hand how a fast-paced, iterative, and proficient team creates outstanding products.</p>
       
-      <p>Build relationships with regulatory experts and make compliance a core part of your product strategy, not an afterthought. Some of our most successful features have turned regulatory requirements from burdens into opportunities for efficiency.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Final Thoughts</h3>
+      <p>Five years in product management have reinforced one key truth: success isn't just about delivering features—it's about delivering value. Whether through efficiency, design, or leadership, my role is to create an environment where great products can thrive. And as with any journey, the learning never stops.</p>
     `,
-    date: "May 5, 2024"
+    date: "1st March 2025"
   }
 ];
 
