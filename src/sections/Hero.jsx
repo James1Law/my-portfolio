@@ -18,8 +18,9 @@ const Hero = () => {
             Product Manager
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            I build exceptional and accessible digital experiences for the web.
-            Focused on creating clean, user-friendly interfaces that solve real problems.
+            Former Chief Mate, bringing maritime expertise to software product management. 
+            I combine my seafaring knowledge with a passion for technology to create 
+            innovative solutions for the maritime industry.
           </p>
           
           <div className="flex flex-wrap gap-4">
