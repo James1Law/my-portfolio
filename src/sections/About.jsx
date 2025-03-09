@@ -25,13 +25,13 @@ const About = () => {
           >
             <h3 className="text-2xl font-bold mb-4">Product Manager & UI/UX Enthusiast</h3>
             <p className="text-gray-600 mb-4">
-              I'm a dedicated Product Manager specializing in maritime technology solutions.
-              With a unique background as a former deck officer and a passion for software development,
+              I'm a dedicated Product Manager specialising in maritime technology solutions.
+              With a unique background as a former Deck Officer and a passion for software development,
               I bridge the gap between seafaring expertise and digital innovation to create
               intuitive maritime products that solve real industry challenges.
             </p>
             <p className="text-gray-600 mb-6">
-              My professional journey began with 11 years as a deck officer at sea, giving me deep 
+              My professional journey began with 11 years as a Deck Officer at sea, giving me deep 
               insights into maritime operations and challenges. For the past 5 years, I've leveraged 
               this expertise in product management, where I combine my seafaring knowledge with 
               technology to develop solutions that truly address the needs of maritime professionals.
