@@ -15,7 +15,7 @@ const Footer = () => {
               &copy; {currentYear} All Rights Reserved
             </p>
             <p className="text-gray-400">
-              Designed & Built with ❤️
+              Designed and built by me, using AI 🤖
             </p>
           </div>
         </div>
