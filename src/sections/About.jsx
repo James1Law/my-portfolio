@@ -68,10 +68,6 @@ const About = () => {
                 <p className="font-medium">Location:</p>
                 <p className="text-gray-600">Dorset, UK</p>
               </div>
-              <div>
-                <p className="font-medium">Availability:</p>
-                <p className="text-gray-600">Employed and open to opportunities</p>
-              </div>
             </div>
             
             <div className="mt-8">

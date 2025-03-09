@@ -2,28 +2,40 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: "Senior Frontend Developer",
-    company: "Tech Solutions Inc.",
-    period: "2021 - Present",
-    description: "Led the frontend development team in building a SaaS platform. Implemented modern UI components using React and TypeScript. Improved site performance by 40%."
+    title: "Product Manager",
+    company: "Ninety Percent of Everything",
+    period: "Sept 2022 - Present",
+    description: "Leading the development of a new product for the maritime industry, focusing on commerical efficiency through technology."
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Innovations",
-    period: "2018 - 2021",
-    description: "Developed responsive web applications using React and Redux. Collaborated with designers to implement pixel-perfect UIs. Mentored junior developers."
+    title: "Digital Product Owner",
+    company: "Thames Water",
+    period: "Apr 2022 - Sep 2022",
+    description: "Owned the digital product for Thames Water's report a leak portal, focusing on improving customer experience."
   },
   {
-    title: "Web Developer",
-    company: "Creative Agency",
-    period: "2016 - 2018",
-    description: "Built websites for various clients using HTML, CSS, and JavaScript. Implemented responsive designs and ensured cross-browser compatibility."
+    title: "Product Owner",
+    company: "Smartstream Technologies",
+    period: "Aug 2021 - Apr 2022",
+    description: "Back office cash management product owner, focusing on improving the customer experience through digital solutions."
   },
   {
-    title: "Intern",
-    company: "StartUp Hub",
-    period: "2015 - 2016",
-    description: "Assisted in developing website features. Learned modern web development practices and collaborated with senior developers."
+    title: "Product Manager",
+    company: "OneOcean Group",
+    period: "Feb 2020 - Aug 2021",
+    description: "Leading multiple development teams in an Agile environment, launching a new version of their flagship product."
+  },
+  {
+    title: "Maritime Support Officer",
+    company: "MSC Cruises UK",
+    period: "2018 - 2020",
+    description: "Monitoring the safety and operations of the MSC Cruises UK fleet, ensuring compliance with regulations and company policies."
+  },
+  {
+    title: "Deck Cadet to Senior Officer",
+    company: "Princess Cruises",
+    period: "2007 - 2018",
+    description: "Started as a deck cadet and worked my way up to a senior second officer, gaining experience, responsibilties and qualifications along the way."
   }
 ];
 
