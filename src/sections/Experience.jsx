@@ -35,7 +35,7 @@ const experiences = [
     title: "Deck Cadet to Senior Officer",
     company: "Princess Cruises",
     period: "2007 - 2018",
-    description: "Started as a deck cadet and worked my way up to a senior second officer, gaining experience, responsibilties and qualifications along the way."
+    description: "Started as a Deck Cadet and worked my way up to Senior Second Officer, gaining experience, responsibilties and qualifications along the way."
   }
 ];
 
