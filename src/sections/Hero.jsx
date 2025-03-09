@@ -15,7 +15,7 @@ const Hero = () => {
             James Law
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold text-gray-700 mb-6">
-            Frontend Developer
+            Product Manager
           </h2>
           <p className="text-lg text-gray-600 mb-8">
             I build exceptional and accessible digital experiences for the web.
