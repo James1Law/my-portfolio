@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 
 const skills = [
-  { name: "HTML/CSS", level: 90 },
-  { name: "JavaScript", level: 85 },
-  { name: "React", level: 80 },
-  { name: "Node.js", level: 70 },
-  { name: "UI/UX Design", level: 75 },
-  { name: "Responsive Design", level: 90 },
-  { name: "TypeScript", level: 65 },
-  { name: "Git/GitHub", level: 80 }
+  { name: "Product Strategy", level: 90 },
+  { name: "Agile/Scrum", level: 95 },
+  { name: "User Research", level: 90 },
+  { name: "Stakeholder Management", level: 85 },
+  { name: "Maritime Domain Knowledge", level: 95 },
+  { name: "Roadmap Planning", level: 80 },
+  { name: "Data Analysis", level: 75 },
+  { name: "Requirements Definition", level: 90 },
+  { name: "Technical/Engineering Proficiency", level: 70 },
+  { name: "Project Management", level: 85 },
 ];
 
 const Skills = () => {
