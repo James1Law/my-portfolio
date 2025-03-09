@@ -15,7 +15,7 @@ const blogPosts = [
       <p>Progression at sea was structured and clear. With each passing year, I climbed the ranks, earning new certifications and increasing my responsibilities. The path ahead was set—Chief Officer, then Captain. Yet, despite the steady climb, something shifted in me.</p>
       
       <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Hidden Cost of Life at Sea</h3>
-      <p>Life at sea offers unique rewards, but it also comes with sacrifices. I spent months away from home, missing birthdays, weddings, and the simple joys of day-to-day life with friends and family. The isolation was part of the deal, but over time, I felt its weight more heavily. Calls home became moments of longing rather than connection. I realized that while I was excelling in my career, I was drifting further away from the people who mattered most.</p>
+      <p>Life at sea offers unique rewards, but it also comes with sacrifices. I spent months away from home, missing birthdays, weddings, and the simple joys of day-to-day life with friends and family. The isolation was part of the deal, but over time, I felt its weight more heavily. Calls home became moments of longing rather than connection. I realised that while I was excelling in my career, I was drifting further away from the people who mattered most.</p>
       
       <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Making the Difficult Decision</h3>
       <p>The decision to step away from a career I had spent my life building was not easy. Many of my colleagues couldn't understand why I would trade a promising maritime future for the unknown. But I knew it was time for a change. I wanted to be present—not just as a voice on a satellite call, but as a friend, a son, a partner.</p>
@@ -101,13 +101,13 @@ const blogPosts = [
       <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Time Management is Everything</h3>
       <p>In my early days as a Product Manager, I often felt pulled in multiple directions—stakeholder meetings, backlog refinement, sprint planning, user interviews, and roadmap updates. It took time to develop a system that worked, but now, efficiency is second nature.</p>
       
-      <p>Prioritization is key. Not everything needs to be done immediately. Learning to focus on high-impact tasks while delegating or deferring less critical ones has been crucial.</p>
+      <p>Prioritisation is key. Not everything needs to be done immediately. Learning to focus on high-impact tasks while delegating or deferring less critical ones has been crucial.</p>
       <p>Time blocking works. I set aside deep-focus hours for strategic work, ensuring that meetings don't consume my entire day.</p>
       <p>The "two-minute rule" is powerful. If something takes less than two minutes to complete, I do it immediately instead of letting small tasks pile up.</p>
       <p>Mastering time management means I can spend more time driving value rather than firefighting distractions.</p>
       
       <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">UI/UX Design: More Than Just Aesthetics</h3>
-      <p>Early in my career, I underestimated the role of design in product success. I saw UI/UX as something for designers to handle. But I quickly realized that a great user experience isn't just about visual appeal—it's about making products intuitive, efficient, and enjoyable to use.</p>
+      <p>Early in my career, I underestimated the role of design in product success. I saw UI/UX as something for designers to handle. But I quickly realised that a great user experience isn't just about visual appeal—it's about making products intuitive, efficient, and enjoyable to use.</p>
       
       <p>Users don't read, they scan. Clear information hierarchy and intuitive navigation are crucial for usability.</p>
       <p>Less is more. Simplicity wins over complexity. Every additional feature, button, or input field should have a purpose.</p>
