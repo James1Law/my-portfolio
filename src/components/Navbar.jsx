@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm">
       <nav className="flex items-center justify-between padding-x py-4">
-        <a href="/" className="text-xl font-bold">Your Name</a>
+        <a href="/" className="text-xl font-bold">James Law</a>
         
         {/* Desktop Navigation */}
         <ul className="hidden md:flex gap-12">
