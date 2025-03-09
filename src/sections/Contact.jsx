@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+
+emailjs.init("r4DOP1GgnPHGUDXiJ");
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -60,8 +63,18 @@ const Contact = () => {
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate form submission
-      setTimeout(() => {
+      emailjs.send(
+        'service_deaifzz',  // Your Service ID
+        'template_tlsrs5e', // Your Template ID
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        }
+      )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setFormData({
@@ -71,11 +84,15 @@ const Contact = () => {
           message: ''
         });
         
-        // Reset success message after 5 seconds
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 5000);
-      }, 1500);
+      })
+      .catch((error) => {
+        console.log('FAILED...', error);
+        setIsSubmitting(false);
+        alert('Failed to send the message. Please try again later.');
+      });
     }
   };
   
