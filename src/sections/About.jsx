@@ -62,15 +62,15 @@ const About = () => {
               </div>
               <div>
                 <p className="font-medium">Email:</p>
-                <p className="text-gray-600">james@example.com</p>
+                <p className="text-gray-600">officerjlaw@gmail.com</p>
               </div>
               <div>
                 <p className="font-medium">Location:</p>
-                <p className="text-gray-600">San Francisco, CA</p>
+                <p className="text-gray-600">Dorset, UK</p>
               </div>
               <div>
                 <p className="font-medium">Availability:</p>
-                <p className="text-gray-600">Open to opportunities</p>
+                <p className="text-gray-600">Employed and open to opportunities</p>
               </div>
             </div>
             
