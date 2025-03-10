@@ -9,23 +9,23 @@ const blogPosts = [
     image: "gray-300", // Replace with actual image
     summary: "Leaving the sea behind: My personal journey of choosing presence over progression and finding new purpose in product management.",
     content: `
-      <p>For over a decade, the open sea was my home. As a Senior Officer of the Watch, I carried the weight of responsibility, ensuring the safe navigation of some of the world's largest passenger vessels. The role was demanding but fulfilling—every day was a test of skill, discipline, and decision-making. Whether sailing across vast oceans or maneuvering through congested ports, my job was to anticipate, adapt, and execute with precision.</p>
+      <p class="dark:text-gray-300">For over a decade, the open sea was my home. As a Senior Officer of the Watch, I carried the weight of responsibility, ensuring the safe navigation of some of the world's largest passenger vessels. The role was demanding but fulfilling—every day was a test of skill, discipline, and decision-making. Whether sailing across vast oceans or maneuvering through congested ports, my job was to anticipate, adapt, and execute with precision.</p>
       
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Maritime Career Path</h3>
-      <p>Progression at sea was structured and clear. With each passing year, I climbed the ranks, earning new certifications and increasing my responsibilities. The path ahead was set—Chief Officer, then Captain. Yet, despite the steady climb, something shifted in me.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;" class="dark:text-blue-400 dark:border-gray-700">The Maritime Career Path</h3>
+      <p class="dark:text-gray-300">Progression at sea was structured and clear. With each passing year, I climbed the ranks, earning new certifications and increasing my responsibilities. The path ahead was set—Chief Officer, then Captain. Yet, despite the steady climb, something shifted in me.</p>
       
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">The Hidden Cost of Life at Sea</h3>
-      <p>Life at sea offers unique rewards, but it also comes with sacrifices. I spent months away from home, missing birthdays, weddings, and the simple joys of day-to-day life with friends and family. The isolation was part of the deal, but over time, I felt its weight more heavily. Calls home became moments of longing rather than connection. I realised that while I was excelling in my career, I was drifting further away from the people who mattered most.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;" class="dark:text-blue-400 dark:border-gray-700">The Hidden Cost of Life at Sea</h3>
+      <p class="dark:text-gray-300">Life at sea offers unique rewards, but it also comes with sacrifices. I spent months away from home, missing birthdays, weddings, and the simple joys of day-to-day life with friends and family. The isolation was part of the deal, but over time, I felt its weight more heavily. Calls home became moments of longing rather than connection. I realised that while I was excelling in my career, I was drifting further away from the people who mattered most.</p>
       
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Making the Difficult Decision</h3>
-      <p>The decision to step away from a career I had spent my life building was not easy. Many of my colleagues couldn't understand why I would trade a promising maritime future for the unknown. But I knew it was time for a change. I wanted to be present—not just as a voice on a satellite call, but as a friend, a son, a partner.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;" class="dark:text-blue-400 dark:border-gray-700">Making the Difficult Decision</h3>
+      <p class="dark:text-gray-300">The decision to step away from a career I had spent my life building was not easy. Many of my colleagues couldn't understand why I would trade a promising maritime future for the unknown. But I knew it was time for a change. I wanted to be present—not just as a voice on a satellite call, but as a friend, a son, a partner.</p>
       
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;">Finding New Purpose Ashore</h3>
-      <p>Transitioning ashore meant reinventing myself. I had to take the leadership, problem-solving, and strategic thinking I had honed at sea and apply them to a new industry. I found my footing in product management—building solutions, leading teams, and navigating the complexities of technology. It was a different kind of challenge but one that resonated with me. The thrill of problem-solving remained, but now, I was working in an environment that allowed me to be surrounded by the people I had missed for so long.</p>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #2563eb; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem;" class="dark:text-blue-400 dark:border-gray-700">Finding New Purpose Ashore</h3>
+      <p class="dark:text-gray-300">Transitioning ashore meant reinventing myself. I had to take the leadership, problem-solving, and strategic thinking I had honed at sea and apply them to a new industry. I found my footing in product management—building solutions, leading teams, and navigating the complexities of technology. It was a different kind of challenge but one that resonated with me. The thrill of problem-solving remained, but now, I was working in an environment that allowed me to be surrounded by the people I had missed for so long.</p>
       
-      <p>Looking back, I have no regrets. The skills I developed at sea—discipline, resilience, and adaptability—have been invaluable in my new career. Changing course didn't mean abandoning my past; it meant using my experiences to carve a new path forward.</p>
+      <p class="dark:text-gray-300">Looking back, I have no regrets. The skills I developed at sea—discipline, resilience, and adaptability—have been invaluable in my new career. Changing course didn't mean abandoning my past; it meant using my experiences to carve a new path forward.</p>
       
-      <p>For anyone facing a similar crossroads, my advice is simple: listen to what truly matters to you. A successful career is important, but so is the life you build around it. Sometimes, the bravest decision isn't staying the course—it's having the courage to change it.</p>
+      <p class="dark:text-gray-300">For anyone facing a similar crossroads, my advice is simple: listen to what truly matters to you. A successful career is important, but so is the life you build around it. Sometimes, the bravest decision isn't staying the course—it's having the courage to change it.</p>
     `,
     date: "15th June 2020"
   },
@@ -143,7 +143,7 @@ const BlogPosts = () => {
   };
   
   return (
-    <section id="blog" className="py-20 bg-gray-50">
+    <section id="blog" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -152,9 +152,9 @@ const BlogPosts = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="heading mb-4">Blog</h2>
+          <h2 className="heading mb-4 dark:text-white">Blog</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Thoughts and insights from my journey in maritime technology and product management.
           </p>
         </motion.div>
@@ -167,19 +167,19 @@ const BlogPosts = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg overflow-hidden shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-xl font-bold">{post.title}</h3>
-                  <span className="text-sm text-blue-600 font-medium">{post.category}</span>
+                  <h3 className="text-xl font-bold dark:text-white">{post.title}</h3>
+                  <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">{post.category}</span>
                 </div>
-                <p className="text-gray-500 text-sm mb-3">{post.date}</p>
-                <p className="text-gray-600 mb-4">{post.summary}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{post.date}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{post.summary}</p>
                 
                 <motion.button
                   onClick={() => togglePost(index)}
-                  className="px-4 py-2 bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors"
+                  className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -192,7 +192,7 @@ const BlogPosts = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mt-6 blog-content"
+                    className="mt-6 blog-content dark:text-gray-300"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                   />
                 )}
