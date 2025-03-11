@@ -18,7 +18,7 @@ const Hero = () => {
             Product Manager
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Former Chief Mate, bringing maritime expertise to software product management. 
+            Former Merchant Navy Deck Officer, bringing maritime expertise to software product management. 
             I combine my seafaring knowledge with a passion for technology to create 
             innovative solutions for the maritime industry.
           </p>
