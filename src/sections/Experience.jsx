@@ -82,7 +82,7 @@ const Experience = () => {
               From the high seas and travelling the world, to navigating diverse digital products.
             </p>
             <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg">
-              Below is a timeline of my professional experience, showcasing my growth and experiences I've developed along the way.
+            Below is a timeline of my career, highlighting the roles I've held, the industries I've worked in, and the key experiences that have shaped my journey.
             </p>
           </motion.div>
         </div>
