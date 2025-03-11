@@ -17,11 +17,27 @@ const About = () => {
         
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="hidden md:block md:w-1/3 lg:w-2/5"
+          >
+            <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg border-4 border-blue-600 dark:border-blue-500 shadow-xl">
+              <img 
+                src="/photos/cruise-ship.jpg" 
+                alt="Cruise ship" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </motion.div>
+          
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="w-full"
+            className="w-full md:w-2/3 lg:w-3/5"
           >
             <h3 className="text-2xl font-bold mb-4 dark:text-white">Product Manager & UI/UX Enthusiast</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -52,6 +68,23 @@ const About = () => {
               </div>
             </div>
             
+            {/* Mobile-only image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="md:hidden mt-8 mb-8"
+            >
+              <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border-4 border-blue-600 dark:border-blue-500 shadow-xl">
+                <img 
+                  src="/photos/cruise-ship.jpg" 
+                  alt="Cruise ship" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+            
             <div className="mt-8">
               <motion.a
                 href="/documents/james_law_resume.pdf"
@@ -60,7 +93,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
               >
-                Download Resume
+                Download CV
               </motion.a>
             </div>
           </motion.div>
