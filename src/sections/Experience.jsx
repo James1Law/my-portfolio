@@ -56,7 +56,7 @@ const Experience = () => {
         
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200 dark:bg-blue-800"></div>
+          <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200 dark:bg-blue-800"></div>
           
           {/* Experience items */}
           {experiences.map((exp, index) => (
@@ -66,18 +66,18 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex flex-col md:flex-row items-center mb-12 ${
+              className={`relative flex flex-col md:flex-row items-start md:items-center mb-12 ${
                 index % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
             >
               {/* Timeline dot */}
-              <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800"></div>
+              <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 top-8 md:top-auto w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800"></div>
               
               {/* Content */}
-              <div className="w-full md:w-5/12 ml-8 md:ml-0 md:px-8">
+              <div className="w-full md:w-5/12 pl-12 md:pl-0 md:px-8">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                   <h3 className="text-xl font-bold mb-1 dark:text-white">{exp.title}</h3>
-                  <div className="flex items-center mb-3">
+                  <div className="flex flex-wrap items-center mb-3">
                     <span className="text-blue-600 dark:text-blue-400 font-medium">{exp.company}</span>
                     <span className="mx-2 dark:text-gray-400">•</span>
                     <span className="text-gray-500 dark:text-gray-400">{exp.period}</span>
@@ -87,7 +87,7 @@ const Experience = () => {
               </div>
               
               {/* Empty space for alignment */}
-              <div className="w-full md:w-5/12"></div>
+              <div className="hidden md:block w-full md:w-5/12"></div>
             </motion.div>
           ))}
         </div>

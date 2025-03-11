@@ -37,14 +37,14 @@ const About = () => {
               technology to develop solutions that truly address the needs of maritime professionals.
             </p>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <p className="font-medium dark:text-white">Name:</p>
                 <p className="text-gray-600 dark:text-gray-300">James Law</p>
               </div>
               <div>
                 <p className="font-medium dark:text-white">Email:</p>
-                <p className="text-gray-600 dark:text-gray-300">officerjlaw@gmail.com</p>
+                <p className="text-gray-600 dark:text-gray-300 break-words">officerjlaw@gmail.com</p>
               </div>
               <div>
                 <p className="font-medium dark:text-white">Location:</p>
