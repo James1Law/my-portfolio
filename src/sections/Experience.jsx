@@ -54,6 +54,39 @@ const Experience = () => {
           <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
         </motion.div>
         
+        {/* Added Image Section */}
+        <div className="flex flex-col md:flex-row items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full md:w-1/3 mb-8 md:mb-0"
+          >
+            <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg border-4 border-blue-600 dark:border-blue-500 shadow-xl">
+              <img 
+                src="/photos/me-under-prop.JPG" 
+                alt="Me under ship propeller" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full md:w-2/3 md:pl-12"
+          >
+            <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg mb-4">
+              From the high seas and travelling the world, to navigating diverse digital products.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg">
+              Below is a timeline of my professional experience, showcasing my growth and experiences I've developed along the way.
+            </p>
+          </motion.div>
+        </div>
+        
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200 dark:bg-blue-800"></div>
