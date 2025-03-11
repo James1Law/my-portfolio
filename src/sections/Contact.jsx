@@ -68,9 +68,11 @@ const Contact = () => {
         'template_tlsrs5e', // Your Template ID
         {
           from_name: formData.name,
+          from_email: formData.email,
           reply_to: formData.email,
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
+          email: formData.email
         }
       )
       .then((response) => {
@@ -86,7 +88,7 @@ const Contact = () => {
         
         setTimeout(() => {
           setSubmitSuccess(false);
-        }, 5000);
+        }, 15000);
       })
       .catch((error) => {
         console.log('FAILED...', error);
