@@ -38,7 +38,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400 font-medium rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
             >
-              View My Work
+              Read My Blog
             </motion.a>
           </div>
         </motion.div>
