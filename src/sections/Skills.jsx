@@ -55,8 +55,7 @@ const Skills = () => {
           <h2 className="heading text-4xl md:text-5xl font-bold mb-4 dark:text-white">My Skills</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            As a Product Manager, I bring a diverse set of skills organized around key competency areas
-            that drive successful product development and delivery.
+          As a Product Manager, I bring a well-rounded skill set, shaped by experience and a deep understanding of what drives successful product development and delivery. My expertise is organised into key competency areas, each playing a vital role in turning ideas into impactful solutions.
           </p>
         </motion.div>
         
