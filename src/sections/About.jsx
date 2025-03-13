@@ -25,8 +25,8 @@ const About = () => {
           >
             <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg border-4 border-blue-600 dark:border-blue-500 shadow-xl">
               <img 
-                src="/photos/cruise-ship.jpg" 
-                alt="Cruise ship" 
+                src="/photos/me-standing.JPG" 
+                alt="James Law standing" 
                 className="w-full h-auto object-cover"
               />
             </div>
@@ -78,8 +78,8 @@ const About = () => {
             >
               <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border-4 border-blue-600 dark:border-blue-500 shadow-xl">
                 <img 
-                  src="/photos/cruise-ship.jpg" 
-                  alt="Cruise ship" 
+                  src="/photos/me-standing.JPG" 
+                  alt="James Law standing" 
                   className="w-full h-auto object-cover"
                 />
               </div>

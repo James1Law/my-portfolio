@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Rename to blogPosts
 const blogPosts = [
   {
     title: "Changing course: From ship to shore",
     category: "Career",
-    image: "gray-300", // Replace with actual image
+    image: "/photos/me-at-work-msc.jpeg", // Updated to use your actual image
     summary: "Leaving the sea behind: My personal journey of choosing presence over progression and finding new purpose in product management.",
     content: `
       <p class="dark:text-gray-300">For over a decade, the open sea was my home. As a Senior Officer of the Watch, I carried the weight of responsibility, ensuring the safe navigation of some of the world's largest passenger vessels. The role was demanding but fulfilling—every day was a test of skill, discipline, and decision-making. Whether sailing across vast oceans or maneuvering through congested ports, my job was to anticipate, adapt, and execute with precision.</p>
@@ -32,7 +32,7 @@ const blogPosts = [
   {
     title: "From Bridge to Backlog",
     category: "Career",
-    image: "gray-300", // Replace with actual image
+    image: "/photos/ships-berth.jpg", // Replace with actual image
     summary: "Navigating my first months in product management",
     content: `
       <p>At the end of 2020, I found myself in unfamiliar waters—not on the bridge of a ship, but in the world of product management. After years of structured responsibilities at sea, I was now navigating a new landscape filled with terms like Agile, Scrum, and Kanban. These weren't navigational charts or shipboard protocols, but frameworks for managing work in a fast-paced, ever-changing environment.</p>
@@ -61,7 +61,7 @@ const blogPosts = [
   {
     title: "Navigating the challenges of product management in maritime technology",
     category: "Product Development",
-    image: "gray-300", // Replace with actual image
+    image: "/photos/cruise-ship.jpg", // Replace with actual image
     summary: "Learning what product development in maritime really means",
     content: `
       <p>When I transitioned into product management, I quickly learned that no two industries approach product development the same way. In tech-driven sectors, launching a product often means rapid iterations, fast feedback loops, and instant deployment. In maritime, the reality is quite different. Onboarding new customers isn't just about getting them to sign up—it's about overcoming logistical, technical, and operational barriers that don't exist in many other industries.</p>
@@ -91,7 +91,7 @@ const blogPosts = [
   {
     title: "Five years in product management: Lessons in efficiency, design, and leadership",
     category: "Career Development",
-    image: "gray-300", // Replace with actual image
+    image: "/photos/me-working-from-home.jpeg", // Replace with actual image
     summary: "Reflections on my journey from maritime operations to product management, sharing key lessons on time management, UI/UX design, and team leadership.",
     content: `
       <p>Five years ago, I took a leap from maritime operations into product management. It was a shift that required me to rethink how I worked—moving from structured, high-stakes navigation to the fast-paced, iterative world of product development. Looking back, I can see how much I've grown, not just in technical skills, but in leadership, efficiency, and team collaboration.</p>
@@ -169,33 +169,52 @@ const BlogPosts = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             >
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-xl font-bold dark:text-white">{post.title}</h3>
-                  <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">{post.category}</span>
-                </div>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{post.date}</p>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{post.summary}</p>
-                
-                <motion.button
-                  onClick={() => togglePost(index)}
-                  className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {expandedPost === index ? "Read Less" : "Read More"}
-                </motion.button>
-                
-                {expandedPost === index && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-6 blog-content dark:text-gray-300"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                  />
+              <div className="md:flex">
+                {/* Image container with fixed height */}
+                {post.image && post.image !== "gray-300" && (
+                  <div className="md:w-1/3 h-64 md:h-auto overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 )}
+                {/* Placeholder for posts without real images */}
+                {(!post.image || post.image === "gray-300") && (
+                  <div className="md:w-1/3 h-64 md:h-auto bg-gray-300 dark:bg-gray-700"></div>
+                )}
+                
+                <div className={`p-6 ${post.image && post.image !== "gray-300" ? 'md:w-2/3' : 'w-full'}`}>
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="text-xl font-bold dark:text-white">{post.title}</h3>
+                    <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">{post.category}</span>
+                  </div>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{post.date}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{post.summary}</p>
+                  
+                  <motion.button
+                    onClick={() => togglePost(index)}
+                    className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-md hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {expandedPost === index ? "Read Less" : "Read More"}
+                  </motion.button>
+                  
+                  <AnimatePresence>
+                    {expandedPost === index && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-6 blog-content dark:text-gray-300"
+                        dangerouslySetInnerHTML={{ __html: post.content }}
+                      />
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </motion.div>
           ))}
