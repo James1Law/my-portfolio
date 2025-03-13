@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaJira, FaTrello, FaFigma } from 'react-icons/fa';
-import { SiAsana } from 'react-icons/si';
+import { SiAsana, SiMiro } from 'react-icons/si';
 
 const AhaIcon = () => (
   <svg viewBox="0 0 24 24" width="1em" height="1em" fill="#FF3366">
@@ -11,11 +11,11 @@ const AhaIcon = () => (
 const skillCategories = [
   {
     category: "Strategic",
-    skills: ["Product Strategy", "Roadmap Planning", "Market Analysis", "Product Vision"]
+    skills: ["Product Strategy", "Roadmap Planning", "Competitive Analysis", "Product Vision & Execution"]
   },
   {
     category: "Process",
-    skills: ["Agile/Scrum", "Project Management", "Requirements Definition", "Sprint Planning"]
+    skills: ["Product Discovery", "Roadmap Planning", "Agile Product Development", "Backlog Prioritisation"]
   },
   {
     category: "People",
@@ -27,7 +27,7 @@ const skillCategories = [
   },
   {
     category: "User-Focused",
-    skills: ["User Research", "User Experience", "Customer Journey Mapping", "User Testing"]
+    skills: ["User Research", "User Centric Design", "Customer Journey Mapping", "User Testing"]
   },
   {
     category: "Tools",
@@ -36,7 +36,8 @@ const skillCategories = [
       { name: "Aha!", icon: <AhaIcon /> },
       { name: "Trello", icon: <FaTrello className="text-[#0079BF]" /> },
       { name: "Asana", icon: <SiAsana className="text-[#F06A6A]" /> },
-      { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> }
+      { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
+      { name: "Miro", icon: <SiMiro className="text-[#FFD02F]" /> }
     ]
   }
 ];
@@ -52,7 +53,7 @@ const Skills = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="heading text-4xl md:text-5xl font-bold mb-4 dark:text-white">My Skills</h2>
+          <h2 className="heading text-4xl md:text-5xl font-bold mb-4 dark:text-white">Skills</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           As a Product Manager, I bring a well-rounded skill set, shaped by experience and a deep understanding of what drives successful product development and delivery. My expertise is organised into key competency areas, each playing a vital role in turning ideas into impactful solutions.
@@ -70,25 +71,28 @@ const Skills = () => {
               className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <h3 className="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">{category.category}</h3>
-              <ul className="space-y-2">
-                {category.category === "Tools" ? (
-                  category.skills.map((skill, skillIndex) => (
-                    <li key={skillIndex} className="flex items-center">
+              
+              {category.category === "Tools" ? (
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex} className="flex items-center">
                       <span className="mr-2 text-lg">
                         {skill.icon}
                       </span>
                       <span className="text-gray-700 dark:text-gray-300">{skill.name}</span>
-                    </li>
-                  ))
-                ) : (
-                  category.skills.map((skill, skillIndex) => (
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <ul className="space-y-2">
+                  {category.skills.map((skill, skillIndex) => (
                     <li key={skillIndex} className="flex items-center">
                       <span className="text-blue-500 dark:text-blue-400 mr-2">•</span>
                       <span className="text-gray-700 dark:text-gray-300">{skill}</span>
                     </li>
-                  ))
-                )}
-              </ul>
+                  ))}
+                </ul>
+              )}
             </motion.div>
           ))}
         </div>
