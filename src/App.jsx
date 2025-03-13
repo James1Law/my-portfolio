@@ -1,5 +1,6 @@
 import { Hero, About, Experience, Projects, Skills, Contact } from './sections';
 import { Navbar, Footer } from './components';
+import OutOfWork from './sections/OutOfWork';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
       <section className="padding" id="contact">
         <Contact />
       </section>
+
+      <OutOfWork />
       
       <Footer />
     </main>
