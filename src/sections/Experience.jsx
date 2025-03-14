@@ -28,13 +28,13 @@ const experiences = [
   {
     title: "Maritime Support Officer",
     company: "MSC Cruises UK",
-    period: "2018 - 2020",
+    period: "Sept 2018 - Feb 2020",
     description: "Monitoring the safety and operations of the MSC Cruises UK fleet, ensuring compliance with regulations and company policies."
   },
   {
     title: "Deck Cadet to Senior Officer",
     company: "Princess Cruises",
-    period: "2007 - 2018",
+    period: "Sept 2007 - Sept 2018",
     description: "Started as a Deck Cadet and worked my way up to Senior Second Officer, gaining experience, responsibilties and qualifications along the way."
   }
 ];
@@ -89,7 +89,7 @@ const Experience = () => {
         
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200 dark:bg-blue-800"></div>
+          <div className="absolute left-3 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200 dark:bg-blue-800"></div>
           
           {/* Experience items */}
           {experiences.map((exp, index) => (
@@ -104,15 +104,15 @@ const Experience = () => {
               }`}
             >
               {/* Timeline dot */}
-              <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 top-8 md:top-auto w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800"></div>
+              <div className="absolute left-3 md:left-1/2 transform md:-translate-x-1/2 top-6 md:top-auto w-4 h-4 md:w-6 md:h-6 rounded-full bg-blue-600 z-10 border-2 md:border-4 border-white dark:border-gray-800 shadow-md"></div>
               
               {/* Content */}
-              <div className="w-full md:w-5/12 pl-12 md:pl-0 md:px-8">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+              <div className="w-full md:w-5/12 pl-10 md:pl-0 md:px-8">
+                <div className="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md border-l-2 border-blue-500 md:border-l-0">
                   <h3 className="text-xl font-bold mb-1 dark:text-white">{exp.title}</h3>
-                  <div className="flex flex-wrap items-center mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-3">
                     <span className="text-blue-600 dark:text-blue-400 font-medium">{exp.company}</span>
-                    <span className="mx-2 dark:text-gray-400">•</span>
+                    <span className="hidden sm:block mx-2 dark:text-gray-400">•</span>
                     <span className="text-gray-500 dark:text-gray-400">{exp.period}</span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
