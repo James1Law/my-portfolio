@@ -35,17 +35,29 @@ const OutOfWork = () => {
       <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 text-sm flex items-center transition-colors mx-auto group"
+          className={`flex items-center justify-center gap-3 px-5 py-2 rounded-full transition-all duration-300 mx-auto group shadow-sm ${
+            isExpanded 
+              ? "bg-transparent text-gray-700 dark:text-gray-300" 
+              : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
+          }`}
         >
-          <span className="mr-2">{isExpanded ? "−" : "+"}</span>
-          Outside of Work
-          <motion.span
-            animate={{ rotate: isExpanded ? 180 : 0 }}
+          <motion.div
+            animate={{ 
+              rotate: isExpanded ? 45 : 0
+            }}
+            className={`flex items-center justify-center w-5 h-5 rounded-full text-gray-700 dark:text-gray-300 transition-colors ${
+              isExpanded 
+                ? "bg-gray-200 dark:bg-gray-700" 
+                : "bg-gray-200 dark:bg-gray-700"
+            }`}
             transition={{ duration: 0.3 }}
-            className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            ↓
-          </motion.span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </motion.div>
+          <span className="font-medium">Outside of Work</span>
         </button>
         
         <AnimatePresence>
@@ -76,9 +88,19 @@ const OutOfWork = () => {
                         <h4 className="text-lg font-medium text-gray-800 dark:text-gray-100">{story.title}</h4>
                         <div className="flex items-center">
                           <span className="text-sm text-gray-500 dark:text-gray-400 mr-3">{story.date}</span>
-                          <span className="text-gray-500 dark:text-gray-300">
-                            {expandedStories[index] ? "−" : "+"}
-                          </span>
+                          <motion.div
+                            animate={{ 
+                              rotate: expandedStories[index] ? 45 : 0,
+                              backgroundColor: expandedStories[index] ? "#f0f0f0" : "#f0f0f0"
+                            }}
+                            className="flex items-center justify-center w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            transition={{ duration: 0.3 }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="12" y1="5" x2="12" y2="19"></line>
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                          </motion.div>
                         </div>
                       </button>
                       

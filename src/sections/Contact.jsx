@@ -99,8 +99,8 @@ const Contact = () => {
   };
   
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4 mb-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
