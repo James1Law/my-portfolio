@@ -169,23 +169,23 @@ const BlogPosts = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             >
-              <div className="md:flex">
-                {/* Image container with fixed height */}
-                {post.image && post.image !== "gray-300" && (
-                  <div className="md:w-1/3 h-64 md:h-auto overflow-hidden">
+              {/* Fixed layout that doesn't change with expansion */}
+              <div className="md:grid md:grid-cols-3 md:gap-6">
+                {/* Image container - fixed size and position */}
+                {post.image && post.image !== "gray-300" ? (
+                  <div className="h-64 md:h-full">
                     <img 
                       src={post.image} 
                       alt={post.title} 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                )}
-                {/* Placeholder for posts without real images */}
-                {(!post.image || post.image === "gray-300") && (
-                  <div className="md:w-1/3 h-64 md:h-auto bg-gray-300 dark:bg-gray-700"></div>
+                ) : (
+                  <div className="h-64 md:h-full bg-gray-300 dark:bg-gray-700"></div>
                 )}
                 
-                <div className={`p-6 ${post.image && post.image !== "gray-300" ? 'md:w-2/3' : 'w-full'}`}>
+                {/* Content area - takes 2/3 of the width with padding */}
+                <div className="col-span-2 p-6 md:pl-0">
                   <div className="flex justify-between items-center mb-3">
                     <h3 className="text-xl font-bold dark:text-white">{post.title}</h3>
                     <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">{post.category}</span>
@@ -201,21 +201,22 @@ const BlogPosts = () => {
                   >
                     {expandedPost === index ? "Read Less" : "Read More"}
                   </motion.button>
-                  
-                  <AnimatePresence>
-                    {expandedPost === index && (
-                      <motion.div 
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-6 blog-content dark:text-gray-300"
-                        dangerouslySetInnerHTML={{ __html: post.content }}
-                      />
-                    )}
-                  </AnimatePresence>
                 </div>
               </div>
+              
+              {/* Separate expandable content section below the grid */}
+              <AnimatePresence>
+                {expandedPost === index && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-8 pb-8 pt-2 blog-content dark:text-gray-300"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
