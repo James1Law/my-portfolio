@@ -34,8 +34,16 @@ const Navbar = () => {
         }
       });
       
+      // Check if we're at the top of the page
+      const isAtTop = window.scrollY < 100; // You can adjust this threshold
+      
       // Update URL without causing a page reload
-      if (currentSection && currentSection !== activeSection) {
+      if (isAtTop) {
+        // Clear the hash if at the top of the page
+        window.history.replaceState(null, null, window.location.pathname);
+        setActiveSection('');
+      } else if (currentSection && currentSection !== activeSection) {
+        // Update hash for other sections
         setActiveSection(currentSection);
         window.history.replaceState(null, null, `#${currentSection}`);
       }
