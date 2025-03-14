@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   const navLinks = [
     { label: 'About', href: '#about' },
@@ -10,6 +11,57 @@ const Navbar = () => {
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    // Function to determine which section is currently in view
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href.substring(1)); // Remove # from href
+      
+      // Find which section is currently in view
+      let currentSection = '';
+      let minDistance = Infinity;
+      
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Consider a section in view if its top is within viewport or just above it
+          const distance = Math.abs(rect.top);
+          if (distance < minDistance) {
+            minDistance = distance;
+            currentSection = sectionId;
+          }
+        }
+      });
+      
+      // Update URL without causing a page reload
+      if (currentSection && currentSection !== activeSection) {
+        setActiveSection(currentSection);
+        window.history.replaceState(null, null, `#${currentSection}`);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    // Initial check on component mount
+    handleScroll();
+    
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeSection, navLinks]);
+
+  // Function to handle smooth scrolling when clicking nav links
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm">
@@ -22,7 +74,12 @@ const Navbar = () => {
             <li key={link.label}>
               <a 
                 href={link.href}
-                className="text-gray-600 hover:text-black transition-colors"
+                className={`transition-colors ${
+                  activeSection === link.href.substring(1)
+                    ? 'text-black font-medium'
+                    : 'text-gray-600 hover:text-black'
+                }`}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -67,8 +124,15 @@ const Navbar = () => {
                 <li key={link.label} className="w-full">
                   <a 
                     href={link.href}
-                    className="block py-2 text-center text-gray-600 hover:bg-gray-50"
-                    onClick={() => setIsMenuOpen(false)}
+                    className={`block py-2 text-center hover:bg-gray-50 ${
+                      activeSection === link.href.substring(1)
+                        ? 'text-black font-medium bg-gray-100'
+                        : 'text-gray-600'
+                    }`}
+                    onClick={(e) => {
+                      handleNavClick(e, link.href);
+                      setIsMenuOpen(false);
+                    }}
                   >
                     {link.label}
                   </a>
