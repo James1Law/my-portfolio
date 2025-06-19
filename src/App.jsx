@@ -1,6 +1,7 @@
 import { Hero, About, Experience, Projects, Skills, Contact } from './sections';
 import { Navbar, Footer } from './components';
 import OutOfWork from './sections/OutOfWork';
+import Chatbot from './components/Chatbot';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <OutOfWork />
       
       <Footer />
+      <Chatbot />
     </main>
   );
 }
