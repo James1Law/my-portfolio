@@ -1,3 +1,4 @@
+// Triggering redeploy: minor change
 import { Hero, About, Experience, Projects, Skills, Contact } from './sections';
 import { Navbar, Footer } from './components';
 import OutOfWork from './sections/OutOfWork';
