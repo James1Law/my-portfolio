@@ -16,69 +16,6 @@ const Chatbot = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Hardcoded Q&A based on your portfolio content
-  const qaDatabase = {
-    // Conversational AI responses
-    "hello": "Hi! How are you today? I'm here to answer any questions you have about James.",
-    "hi": "Hi there! How are you doing? I'm James's AI assistant and I'd be happy to help you learn more about him.",
-    "hey": "Hey! How's it going? I'm here to chat about James and answer any questions you might have.",
-    "good morning": "Good morning! How are you today? I'm James's AI assistant, ready to help you learn more about him.",
-    "good afternoon": "Good afternoon! How are you doing? I'm here to answer any questions about James.",
-    "good evening": "Good evening! How are you? I'm James's AI assistant and I'd be happy to help you learn more about him.",
-    "how are you": "I'm doing well, thank you for asking! I'm an AI assistant designed to help people learn about James Law. How can I help you today?",
-    "what can you do": "I'm an AI assistant that can answer questions about James Law! I know about his background, work experience, skills, contact information, and personal interests. I can help you learn about his journey from maritime operations to product management, his current role, or anything else about him. What would you like to know?",
-    "what are you": "I'm an AI assistant created to help people learn about James Law. I can answer questions about his professional background, skills, experience, and personal interests. Think of me as a helpful guide to James's portfolio!",
-    "who created you": "I was created as part of James's portfolio website to help visitors learn more about him in an interactive way. I'm designed to provide information about his background, experience, and skills.",
-    "are you real": "I'm an AI assistant, not a real person! I'm a chatbot designed to help you learn about James Law. While I'm not human, I can provide accurate information about James's background, experience, and skills.",
-    "are you human": "No, I'm not human - I'm an AI assistant! I'm designed to help you learn about James Law by answering questions about his background, experience, and skills. I aim to be helpful and informative while being clear that I'm an artificial intelligence.",
-    "thanks": "You're welcome! Is there anything else you'd like to know about James?",
-    "thank you": "You're very welcome! Feel free to ask me anything else about James - I'm here to help!",
-    "bye": "Goodbye! Thanks for chatting with me. Feel free to come back if you have more questions about James!",
-    "goodbye": "Goodbye! It was nice chatting with you. Don't hesitate to return if you want to learn more about James!",
-    "see you": "See you later! Thanks for stopping by to learn about James. Have a great day!",
-    
-    // About section
-    "who are you": "James Law is a Product Manager specialising in maritime technology solutions. He's a former Deck Officer with 11 years at sea, and has been in product management for the past 5 years, combining his seafaring knowledge with technology to develop solutions for maritime professionals.",
-    "what do you do": "James is a Product Manager specialising in maritime technology solutions. He bridges the gap between seafaring expertise and digital innovation to create intuitive maritime products that solve real industry challenges.",
-    "where are you based": "James is based in Dorset, UK.",
-    "what's your background": "James has a unique background as a former Deck Officer with 11 years at sea, followed by 5 years in product management. He started as a Deck Cadet and worked his way up to Senior Second Officer, gaining deep insights into maritime operations and challenges.",
-    "tell me about yourself": "James Law is a Product Manager with a unique background in maritime operations. He spent 11 years as a Deck Officer at sea before transitioning to product management, where he now combines his seafaring knowledge with technology to develop solutions for the maritime industry. He's based in Dorset, UK.",
-    
-    // Experience section
-    "what's your work experience": "James has diverse experience across multiple industries. Currently, he's a Product Manager at Ninety Percent of Everything, leading maritime technology development. Previously, he worked at Thames Water as a Digital Product Owner, Smartstream Technologies as a Product Owner, OneOcean Group as a Product Manager, MSC Cruises UK as a Maritime Support Officer, and Princess Cruises where he progressed from Deck Cadet to Senior Second Officer over 11 years.",
-    "where do you work": "James currently works as a Product Manager at Ninety Percent of Everything, where he's leading the development of a new product for the maritime industry, focusing on commercial efficiency through technology.",
-    "what companies have you worked for": "James has worked for several companies including Ninety Percent of Everything (current), Thames Water, Smartstream Technologies, OneOcean Group, MSC Cruises UK, and Princess Cruises.",
-    "how long have you been a product manager": "James has been in product management for about 5 years, starting in 2020 after transitioning from his maritime career.",
-    "how much product manager experience": "James has 5 years of product management experience, having started in 2020 after transitioning from his maritime career.",
-    "product manager experience": "James has 5 years of product management experience, having started in 2020 after transitioning from his maritime career.",
-    "years of product management": "James has 5 years of product management experience, having started in 2020 after transitioning from his maritime career.",
-    
-    // Skills section
-    "what are your skills": "James's skills are organised into several categories: Strategic (Product Strategy, Roadmap Planning, Competitive Analysis), Process (Product Discovery, Agile Development, Backlog Prioritisation), People (Stakeholder Management, Cross-functional Collaboration, Team Leadership), Technical (Data Analysis, Engineering Proficiency, Maritime Domain Knowledge), User-Focused (User Research, User-Centric Design, Customer Journey Mapping), and Tools (Jira, Aha!, Trello, Asana, Figma, Miro).",
-    "what tools do you use": "James uses various tools including Jira for project management, Aha! for product roadmapping, Trello and Asana for task management, Figma for design collaboration, and Miro for visual collaboration and planning.",
-    "are you technical": "Yes, James has technical proficiency including data analysis, engineering knowledge, and maritime domain expertise. He also has experience with web development and can build web apps from scratch using AI tools.",
-    
-    // Contact section
-    "how can i contact you": "You can contact James via email at james@jamesslaw.co.uk or phone at +44 (0)7738 401449. He's based in Dorset, UK. You can also connect with him on LinkedIn or GitHub.",
-    "what's your email": "James's email is james@jamesslaw.co.uk",
-    "what's your phone number": "James's phone number is +44 (0)7738 401449",
-    "do you have a linkedin": "Yes, you can find James on LinkedIn at https://www.linkedin.com/in/james-law-4386b553/",
-    "do you have a github": "Yes, you can find James on GitHub at https://github.com/James1Law",
-    
-    // Blog/Personal content
-    "do you write blog posts": "Yes, James writes blog posts about his journey from maritime operations to product management, lessons learnt, and insights about working in maritime technology. You can find his blog posts on his website.",
-    "what do you write about": "James writes about his career transition from sea to shore, product management lessons, maritime technology challenges, and personal stories about his life outside of work including running a marathon and his passion for music and technology.",
-    "tell me about your personal life": "Outside of work, James enjoys running (he once ran a marathon from Sherborne to Castle Cary and back), playing guitar and singing (he even performed at his own wedding), and he's passionate about technology - he builds web apps as a hobby using AI tools.",
-    "do you play music": "Yes, James plays guitar and sings. He started learning classical guitar in primary school and still plays today. He even performed at his own wedding and wrote and performed a song for a friend's wedding in 2023.",
-    "have you run a marathon": "Yes, in July 2021 James ran a marathon from his home in Sherborne to his parents' place in Castle Cary and back. It was quite challenging, especially in the hot weather, but he completed it fuelled by digestive biscuits and stubbornness!",
-    
-    // General questions
-    "what makes you unique": "James's unique combination of 11 years as a maritime Deck Officer combined with 5 years in product management gives him a rare perspective. He understands both the operational challenges of maritime professionals and how to translate those needs into effective technology solutions.",
-    "why did you leave the maritime industry": "James left the maritime industry to be more present in his personal life. While he loved his career at sea, he was missing important life events and wanted to be surrounded by family and friends rather than spending months away from home.",
-    "what's your approach to product management": "James's approach combines strategic thinking with user-centric design and efficient team leadership. He focuses on delivering value through clear prioritisation, empathy-driven design, and empowering development teams to work autonomously while maintaining alignment on goals.",
-    "what industries have you worked in": "James has worked in maritime (both at sea and in technology), utilities (Thames Water), financial technology (Smartstream Technologies), and maritime technology (OneOcean Group and Ninety Percent of Everything)."
-  };
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -93,31 +30,61 @@ const Chatbot = () => {
     }
   }, [isOpen]);
 
-  const findBestMatch = (userInput) => {
-    const input = userInput.toLowerCase().trim();
+  const getOpenAIResponse = async (userMessage) => {
+    const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
     
-    // Check for exact matches first
-    for (const [question, answer] of Object.entries(qaDatabase)) {
-      if (input.includes(question) || question.includes(input)) {
-        return answer;
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          messages: [
+            {
+              role: 'system',
+              content: `
+You are an AI assistant embedded in James Law's portfolio website. You are here to help visitors learn about James in a helpful, conversational, and professional tone.
+
+IMPORTANT: Today's date is ${currentDate}. Use this to calculate current experience accurately.
+
+James is a Product Manager with 16 years of experience in the maritime industry, with 11 years at sea as a Senior Second Officer with Princess Cruises. He holds a Chief Mate's Unlimited Certificate and a Foundation Degree in Maritime Operations from Warsash Maritime Academy.
+
+Since moving ashore in 2018, after initially working in a Fleet Operations role, he has worked in several product leadership roles since 2020:
+- At 90POE (current role), he led the end-to-end delivery of a maritime SaaS product.
+- At Thames Water, he ran a design sprint and managed product backlogs.
+- At Smartstream Technologies, he worked as a Product Owner and Scrum Master.
+- At OneOcean, he owned and launched 5 maritime compliance products, working with SQL, Python, GIS, WPF, and AWS.
+
+James specialises in Agile methodologies, UI/UX, product strategy, and stakeholder management. He's skilled with tools like Jira, Trello, Confluence, Asana, and Miro, and has a strong understanding of both B2B and B2C SaaS environments.
+
+He's based in Sherborne, Dorset, UK, and has strong communication, leadership, and multitasking skills.
+
+Outside of work, James enjoys running (including marathons), cycling, and playing guitar. He's tech-savvy, curious, and frequently builds side projects using AI tools.
+
+You can answer questions about James's career, skills, education, work experience, tools he uses, personal life, and how to contact him.
+`
+            },
+            {
+              role: 'user',
+              content: userMessage
+            }
+          ]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+
+      const data = await response.json();
+      return data.choices[0].message.content;
+    } catch (error) {
+      console.error('Error calling OpenAI API:', error);
+      return "Sorry, something went wrong. Please try again later.";
     }
-    
-    // Check for partial matches
-    for (const [question, answer] of Object.entries(qaDatabase)) {
-      const questionWords = question.split(' ');
-      const inputWords = input.split(' ');
-      
-      const matchCount = questionWords.filter(word => 
-        inputWords.some(inputWord => inputWord.includes(word) || word.includes(inputWord))
-      ).length;
-      
-      if (matchCount >= 2) {
-        return answer;
-      }
-    }
-    
-    return null;
   };
 
   const handleSendMessage = async () => {
@@ -134,24 +101,32 @@ const Chatbot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate typing delay
-    setTimeout(() => {
-      const response = findBestMatch(inputValue);
+    try {
+      const response = await getOpenAIResponse(inputValue.trim());
       const botMessage = {
         id: Date.now() + 1,
         type: 'bot',
-        text: response || "Sorry, I don't know the answer to that yet! Feel free to ask me about James's background, experience, skills, or how to contact him.",
+        text: response,
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      const errorMessage = {
+        id: Date.now() + 1,
+        type: 'bot',
+        text: "Sorry, something went wrong. Please try again later.",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
       
       // Refocus the input after the bot responds
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
-    }, 1000);
+    }
   };
 
   const handleKeyPress = (e) => {
