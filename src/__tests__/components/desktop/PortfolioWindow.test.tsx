@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { PortfolioWindow } from "@/components/desktop/PortfolioWindow";
+import { Dock } from "@/components/desktop/Dock";
 import { renderInDesktop } from "./test-utils";
 
 describe("PortfolioWindow", () => {
@@ -76,6 +77,7 @@ describe("PortfolioWindow", () => {
     const user = userEvent.setup();
     renderInDesktop(
       <>
+        <Dock />
         <PortfolioWindow id="welcome">Welcome</PortfolioWindow>
         <PortfolioWindow id="experience">Experience</PortfolioWindow>
       </>
@@ -83,15 +85,19 @@ describe("PortfolioWindow", () => {
 
     const welcome = screen.getByRole("region", { name: "Welcome" });
     const experience = screen.getByRole("region", { name: "Experience" });
+    const dock = screen.getByRole("navigation", { name: "Applications" });
 
-    // Welcome opens frontmost, so Experience starts behind it.
-    expect(Number(welcome.style.zIndex)).toBeGreaterThan(
-      Number(experience.style.zIndex)
-    );
-
-    await user.click(experience);
+    // Opening Experience puts it in front of the already-open Welcome.
+    await user.click(within(dock).getByRole("button", { name: /Experience/ }));
     expect(Number(experience.style.zIndex)).toBeGreaterThan(
       Number(welcome.style.zIndex)
     );
+
+    // Clicking the one behind brings it back to the front.
+    await user.click(welcome);
+    expect(Number(welcome.style.zIndex)).toBeGreaterThan(
+      Number(experience.style.zIndex)
+    );
   });
+
 });

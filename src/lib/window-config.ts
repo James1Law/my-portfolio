@@ -126,13 +126,9 @@ export const APPS: Record<AppId, AppConfig> = {
 
 /**
  * Windows open on first arrival — never an empty desktop (PRD §12).
- *
- * REVIEW BUILD: Experience opens alongside Welcome so window focus, overlap and
- * dragging are visible without a click. PRD §12 wants Welcome alone, so Phase 3
- * drops back to `["welcome"]`.
+ * Order matters: the last one opens frontmost.
  */
-// Order matters: the last one opens frontmost.
-export const DEFAULT_OPEN: AppId[] = ["experience", "welcome"];
+export const DEFAULT_OPEN: AppId[] = ["welcome"];
 
 export const DESKTOP_ICONS: AppId[] = APP_ORDER.filter(
   (id) => APPS[id].onDesktop

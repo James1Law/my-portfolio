@@ -421,3 +421,63 @@ Recorded as built, so later phases don't re-derive these.
 groups under Product in the sidebar, while PRD §16 lists it under Maritime. The
 data is the existing record and hasn't been touched; Phase 3 needs a decision on
 which grouping is right.
+
+---
+
+## 12. Implementation notes — Phase 3
+
+**Content taxonomy**
+
+`Experience.era: "sea" | "product"` became `Experience.group: "product" | "maritime"`.
+The old field mixed two axes — chronology and discipline — which is why MSC Cruises
+(a shore-based maritime role) sat under Product. The sidebar groups by discipline,
+so the field now says that, and MSC groups under Maritime with the sea-going role.
+No dates, employers, metrics or descriptions changed.
+
+`navLinks` and `heroSubtitles` are gone: they served the deleted header and the
+typewriter hero, and the Dock and menu bar replace them.
+
+**Applications**
+
+- **Welcome** — carries the page's only `<h1>`.
+- **About** — About This Mac framing: the JL mark, a plain table of the four
+  headline metrics at their real values, and a small `JamesOS 2.0` line as the
+  one piece of era personality (PRD §37).
+- **Experience** — Finder sidebar grouped Product / Maritime, detail panel with
+  metrics as Aqua badges.
+- **Projects** — Finder icon view with an original icon per project, opening into
+  a detail view with a Back button.
+- **Skills** — System Profiler layout, ticked lists, no percentage bars.
+- **Contact** — mail-app framing with email as the primary action. No form.
+
+`MasterDetail` backs Experience and Skills. It's built on Radix's tab primitives
+so roving focus and arrow keys come from a tested implementation, but the styling
+is ours from the `--aqua-*` tokens — Aqua's own `tabs` is a horizontal segmented
+control, which is the wrong shape for a sidebar, so it was not vendored.
+
+Every panel is force-mounted and hidden when inactive, so the full career history,
+all five projects and every skill are in the served HTML. Verified on the build:
+one `<h1>`, all six employers, all five projects, contact links.
+
+**Deliberately not built**
+
+PRD §17 also asks each project detail for Problem / What it does / What James
+contributed. `data.ts` holds none of that copy, and writing it would mean
+inventing portfolio claims — so the detail shows what the data actually has, and
+those sections wait for real content.
+
+**Layout gotcha, hit three times**
+
+A Tailwind `@container` element styles its *descendants*, never itself. Putting
+`@md:flex-row` or `@md:h-full` on the same element as `@container` silently does
+nothing: the split panes stayed stacked and the sidebar didn't fill its window.
+Every `@md:` class now sits on a child of the container.
+
+Side by side, each pane scrolls itself; stacked, the window scrolls as one —
+nested scroll areas on a phone are miserable.
+
+**Still to come**
+
+Phase 4 (designed mobile shell), Phase 5 (deep linking, focus management, full
+keyboard pass), Phase 6 (polish, remaining easter eggs), Phase 7 (QA and
+Lighthouse).

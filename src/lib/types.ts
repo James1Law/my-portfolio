@@ -1,3 +1,10 @@
+/**
+ * How a role is grouped in the Experience sidebar. This is the discipline, not
+ * the chronology — MSC Cruises was a shore-based maritime role, so it groups
+ * under Maritime alongside the sea-going one (PRD §16).
+ */
+export type RoleGroup = "product" | "maritime";
+
 export interface Metric {
   label: string;
   value: string;
@@ -10,7 +17,7 @@ export interface Experience {
   startDate: string;
   endDate?: string;
   description: string;
-  era: "sea" | "product";
+  group: RoleGroup;
   metrics: Metric[];
   expandedDescription?: string;
 }
@@ -48,7 +55,7 @@ export interface SiteMetadata {
 
 // Type guards
 
-const VALID_ERAS = ["sea", "product"];
+const VALID_GROUPS: RoleGroup[] = ["product", "maritime"];
 const VALID_CATEGORIES: SkillCategory[] = [
   "product",
   "technical",
@@ -68,7 +75,7 @@ export function isExperience(value: unknown): value is Experience {
     typeof value.title === "string" &&
     typeof value.startDate === "string" &&
     typeof value.description === "string" &&
-    VALID_ERAS.includes(value.era as string) &&
+    VALID_GROUPS.includes(value.group as RoleGroup) &&
     Array.isArray(value.metrics)
   );
 }

@@ -71,28 +71,6 @@
    doesn't leave a sticky hover transform behind (PRD §21). */
 @custom-variant pointer-fine (@media (hover: hover) and (pointer: fine));
 
-/* ---------------------------------------------------------------------------
-   Legacy token aliases. The outgoing scrolling-page components still reference
-   the previous dark-first palette; these keep them compiling and legible until
-   Phase 3 replaces them. Delete this block with the last of those components.
-   --------------------------------------------------------------------------- */
-
-@theme inline {
-  --color-bg-primary: #eef0f3;
-  --color-bg-secondary: #e4e7ec;
-  --color-bg-card: #f7f8fa;
-  --color-text-primary: #33383f;
-  --color-text-secondary: #5b6169;
-  --color-text-muted: #7a8089;
-  --color-accent-dim: rgba(47, 125, 224, 0.12);
-  --color-accent-green: #2f8f3f;
-  --color-accent-purple: #6a58c9;
-  --color-accent-orange: #c2661d;
-  --color-border-light: #c4c8d0;
-}
-
-/* --------------------------------------------------------------------------- */
-
 body {
   background: #0b4c9e;
   color: var(--foreground);

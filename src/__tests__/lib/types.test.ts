@@ -19,7 +19,7 @@ describe("Type Guards", () => {
         title: "Head of Product",
         startDate: "Nov 2025",
         description: "Leading crewing platform",
-        era: "product",
+        group: "product",
         metrics: [{ label: "people", value: "18" }],
       };
       expect(isExperience(exp)).toBe(true);
@@ -33,7 +33,7 @@ describe("Type Guards", () => {
         startDate: "Apr 2021",
         endDate: "Apr 2022",
         description: "Agile transformation",
-        era: "product",
+        group: "product",
         metrics: [],
       };
       expect(isExperience(exp)).toBe(true);
