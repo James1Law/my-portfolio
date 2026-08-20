@@ -36,12 +36,19 @@ function Dock({ className, ...props }: React.ComponentProps<"div">) {
 function DockItem({
   label,
   active = false,
+  alwaysShowLabel = false,
   className,
   children,
   ...props
 }: React.ComponentProps<"button"> & {
   label: string
   active?: boolean
+  /**
+   * FORK — shows the label permanently beneath the icon instead of floating it
+   * above on hover. Bottom navigation on a touch device has no hover to reveal
+   * it, and a row of unlabelled icons is a guessing game (PRD §21).
+   */
+  alwaysShowLabel?: boolean
 }) {
   return (
     <button
@@ -57,10 +64,17 @@ function DockItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute -top-[30px] whitespace-nowrap text-[13px] font-semibold text-white opacity-0 transition-opacity [text-shadow:0_1px_2px_rgba(0,0,0,0.9),0_0_5px_rgba(0,0,0,0.65),0_0_10px_rgba(0,0,0,0.45)] group-hover:opacity-100 group-focus-visible:opacity-100">
-        {label}
-      </span>
+      {alwaysShowLabel ? null : (
+        <span className="pointer-events-none absolute -top-[30px] whitespace-nowrap text-[13px] font-semibold text-white opacity-0 transition-opacity [text-shadow:0_1px_2px_rgba(0,0,0,0.9),0_0_5px_rgba(0,0,0,0.65),0_0_10px_rgba(0,0,0,0.45)] group-hover:opacity-100 group-focus-visible:opacity-100">
+          {label}
+        </span>
+      )}
       {children}
+      {alwaysShowLabel ? (
+        <span className="pointer-events-none w-full truncate px-0.5 text-center text-[10px] font-semibold leading-tight text-[#33383f]">
+          {label}
+        </span>
+      ) : null}
       {active ? <span className="sr-only"> (open)</span> : null}
       <span
         aria-hidden="true"

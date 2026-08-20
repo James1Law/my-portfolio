@@ -26,8 +26,13 @@ export function WelcomeApp() {
         following 11 years at sea as a Senior Deck Officer.
       </p>
 
+      {/* About is not in the mobile navigation — five items keep the labels
+          readable at 320px — so Welcome is how it is reached there (PRD §21). */}
       <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
         <AppLauncher target="experience">Explore my experience</AppLauncher>
+        <AppLauncher target="about" variant="secondary">
+          About James
+        </AppLauncher>
         <AppLauncher target="projects" variant="secondary">
           View projects
         </AppLauncher>

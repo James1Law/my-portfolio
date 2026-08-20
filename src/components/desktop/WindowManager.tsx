@@ -97,9 +97,16 @@ export function WindowManager({ children }: { children: React.ReactNode }) {
       minimiseAll: () => dispatch({ type: "minimiseAll" }),
       centreActive: () => dispatch({ type: "centreActive", workspace }),
       resetDesktop: () => dispatch({ type: "reset", workspace }),
-      // `open` already restores a minimised window and focuses a visible one,
-      // so every launcher can share one entry point.
-      activateApp: openWindow,
+      // Every launcher shares this one entry point. `open` already restores a
+      // minimised window and focuses a visible one; on mobile it also replaces
+      // whatever was on screen, because that model shows one app at a time
+      // (PRD §22). Callers don't need to know which model is active.
+      activateApp: (id: AppId) =>
+        dispatch(
+          device.mode === "mobile"
+            ? { type: "activateSolo", id, workspace }
+            : { type: "open", id, workspace }
+        ),
     };
   }, [state, workspace, device]);
 

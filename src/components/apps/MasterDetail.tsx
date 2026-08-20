@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useRef, useState } from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "@/lib/utils";
 
@@ -40,7 +40,23 @@ export function MasterDetail({
   className?: string;
 }) {
   const items = groups.flatMap((group) => group.items);
+  const panels = useRef(new Map<string, HTMLDivElement>());
+  const [value, setValue] = useState(items[0]?.id);
+
   if (items.length === 0) return null;
+
+  /**
+   * When the sidebar sits above the detail rather than beside it, the detail can
+   * be below the fold — so selecting something scrolls to it. Side by side the
+   * panel is already in view and this is a no-op, which keeps one code path for
+   * both layouts.
+   */
+  const select = (next: string) => {
+    setValue(next);
+    requestAnimationFrame(() =>
+      panels.current.get(next)?.scrollIntoView?.({ block: "nearest" })
+    );
+  };
 
   return (
     // The container query has to sit on an ancestor: a `@container` element
@@ -48,7 +64,8 @@ export function MasterDetail({
     // child, not here.
     <div className={cn("@container h-full", className)}>
       <TabsPrimitive.Root
-        defaultValue={items[0].id}
+        value={value}
+        onValueChange={select}
         orientation="vertical"
         className="flex min-h-full flex-col @md:h-full @md:flex-row"
       >
@@ -97,6 +114,10 @@ export function MasterDetail({
               key={item.id}
               value={item.id}
               forceMount
+              ref={(node) => {
+                if (node) panels.current.set(item.id, node);
+                else panels.current.delete(item.id);
+              }}
               className="px-6 py-5 outline-none data-[state=inactive]:hidden"
             >
               {item.detail}

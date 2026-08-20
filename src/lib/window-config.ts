@@ -41,6 +41,11 @@ export interface AppConfig {
   offset: Point;
   /** Appears as a wallpaper shortcut. Kept to a handful (PRD §11). */
   onDesktop: boolean;
+  /**
+   * Appears in the mobile bottom navigation. Five fit comfortably at 320px with
+   * readable labels; About is reached from Welcome instead (PRD §21).
+   */
+  inMobileNav: boolean;
 }
 
 /** Menu bar height. Fixed across breakpoints so the maths stays honest. */
@@ -76,6 +81,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 700, height: 430 },
     offset: { x: 0, y: -40 },
     onDesktop: false,
+    inMobileNav: true,
   },
   about: {
     id: "about",
@@ -85,6 +91,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 560, height: 470 },
     offset: { x: -190, y: 30 },
     onDesktop: true,
+    inMobileNav: false,
   },
   experience: {
     id: "experience",
@@ -94,6 +101,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 840, height: 520 },
     offset: { x: 130, y: 10 },
     onDesktop: true,
+    inMobileNav: true,
   },
   projects: {
     id: "projects",
@@ -103,6 +111,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 780, height: 500 },
     offset: { x: -40, y: 50 },
     onDesktop: true,
+    inMobileNav: true,
   },
   skills: {
     id: "skills",
@@ -112,6 +121,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 700, height: 470 },
     offset: { x: 170, y: 60 },
     onDesktop: false,
+    inMobileNav: true,
   },
   contact: {
     id: "contact",
@@ -121,6 +131,7 @@ export const APPS: Record<AppId, AppConfig> = {
     size: { width: 540, height: 400 },
     offset: { x: 20, y: 0 },
     onDesktop: true,
+    inMobileNav: true,
   },
 };
 
@@ -132,4 +143,8 @@ export const DEFAULT_OPEN: AppId[] = ["welcome"];
 
 export const DESKTOP_ICONS: AppId[] = APP_ORDER.filter(
   (id) => APPS[id].onDesktop
+);
+
+export const MOBILE_NAV: AppId[] = APP_ORDER.filter(
+  (id) => APPS[id].inMobileNav
 );

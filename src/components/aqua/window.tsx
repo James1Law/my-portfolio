@@ -80,15 +80,19 @@ function WindowControl({
       type="button"
       aria-label={label}
       className={cn(
-        LIGHT_BASE,
-        LIGHT_TINTS[tint],
-        // Expands the pointer target to 21px without overlapping its neighbour.
-        "before:absolute before:-inset-1 before:rounded-full before:content-['']",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1c5fb8]",
+        // The button *is* the target, rather than a 13px dot with an invisible
+        // pseudo-element over it: a real box can be measured and tested. At 21px
+        // with no gap between buttons, the dots still sit 8px apart, which is
+        // upstream's spacing exactly. Touch gets a larger box.
+        "inline-flex size-[21px] shrink-0 items-center justify-center rounded-full",
+        "pointer-coarse:size-[30px]",
+        "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-[#1c5fb8]",
         className
       )}
       {...props}
-    />
+    >
+      <span aria-hidden="true" className={cn(LIGHT_BASE, LIGHT_TINTS[tint])} />
+    </button>
   )
 }
 
@@ -97,6 +101,8 @@ function WindowControls({
   onClose,
   onMinimise,
   onMaximise,
+  closeLabel,
+  controlClassName,
   className,
   ...props
 }: Omit<React.ComponentProps<"div">, "title"> & {
@@ -104,21 +110,32 @@ function WindowControls({
   onClose?: () => void
   onMinimise?: () => void
   onMaximise?: () => void
+  /** Overrides the close label where the control means something else, e.g. the
+   * mobile shell's "Back to Welcome". */
+  closeLabel?: string
+  /** Sizing for the individual controls, so a lone control can be larger. */
+  controlClassName?: string
 }) {
   return (
     <div
       data-slot="window-controls"
-      className={cn("z-10 flex gap-2", className)}
+      className={cn("z-10 flex", className)}
       {...props}
     >
       {onClose ? (
-        <WindowControl tint="red" label={`Close ${title}`} onClick={onClose} />
+        <WindowControl
+          tint="red"
+          label={closeLabel ?? `Close ${title}`}
+          onClick={onClose}
+          className={controlClassName}
+        />
       ) : null}
       {onMinimise ? (
         <WindowControl
           tint="yellow"
           label={`Minimise ${title}`}
           onClick={onMinimise}
+          className={controlClassName}
         />
       ) : null}
       {onMaximise ? (
@@ -126,6 +143,7 @@ function WindowControls({
           tint="green"
           label={`Maximise ${title}`}
           onClick={onMaximise}
+          className={controlClassName}
         />
       ) : null}
     </div>

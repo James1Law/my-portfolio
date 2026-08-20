@@ -36,7 +36,7 @@ describe("WelcomeApp", () => {
     expect(screen.getByText(siteMetadata.tagline)).toBeInTheDocument();
   });
 
-  it("offers the three primary actions", () => {
+  it("offers a route into every other application", () => {
     render(
       <WindowManager>
         <WelcomeApp />
@@ -44,6 +44,7 @@ describe("WelcomeApp", () => {
     );
     for (const label of [
       "Explore my experience",
+      "About James",
       "View projects",
       "Get in touch",
     ]) {

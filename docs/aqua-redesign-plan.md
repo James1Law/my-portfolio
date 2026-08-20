@@ -481,3 +481,60 @@ nested scroll areas on a phone are miserable.
 Phase 4 (designed mobile shell), Phase 5 (deep linking, focus management, full
 keyboard pass), Phase 6 (polish, remaining easter eggs), Phase 7 (QA and
 Lighthouse).
+
+## 13. Implementation notes — Phase 4
+
+**The mobile model**
+
+`MobileShell` is its own component tree, as the plan required — `Desktop` returns
+it before any window, menu bar or drag logic is reached. One view fills the
+screen, nothing overlaps, nothing is draggable, and every view stays mounted and
+inert when inactive so the portfolio copy is in the served HTML here too.
+
+- **Single-app model.** A new reducer action, `activateSolo`, opens the requested
+  app and closes any other except Welcome, which is the home view and is never
+  closed. `activateApp` in the window manager picks `activateSolo` on mobile and
+  `open` elsewhere, so the Dock, menu bar, wallpaper shortcuts and the launcher
+  buttons inside Welcome all get the right behaviour without knowing which model
+  is running.
+- **Back, not close.** The red control is labelled "Back to Welcome" and Welcome
+  has no control at all — there is nowhere to go back to from home. Minimise and
+  maximise are absent everywhere in the shell rather than decorative.
+- **Navigation carries five apps.** Six at 320px leaves no room for readable
+  labels, so `inMobileNav` drops About, and Welcome gained an "About James"
+  launcher. Placement is config, not a hardcoded exclusion.
+
+**Fixes this phase turned up**
+
+- **Wallpaper shortcuts were unclickable.** The Phase 2 fix that put windows
+  above the desktop icons gave the windows layer `z-20` — but that layer spans
+  the whole workspace, so it swallowed every click over the icons. It is now
+  `pointer-events-none` with each window opting back in. There is a test for
+  clicking a shortcut; the earlier browser pass had never tried it.
+- **Window controls are now their own target.** The 13px gel dot relied on an
+  invisible `before:` pseudo-element for its hit area, which cannot be measured
+  and so cannot be tested. The dot moved into a `<span>` inside a sized button:
+  21px on a fine pointer, 30px on a coarse one, and 44px for the lone mobile back
+  control. Buttons sit flush so the dots stay exactly 8px apart — verified
+  identical to upstream.
+- **Dock labels were invisible on touch.** Upstream reveals them on hover, and
+  a phone has no hover, so the nav was five unlabelled icons. `DockItem` gained
+  an `alwaysShowLabel` mode that renders the label permanently beneath the icon.
+  The first test only checked the text was in the DOM, which passed while the
+  label was transparent — the browser check now measures computed opacity.
+- **Selecting a role scrolls to it.** Stacked on a phone, the detail sits below
+  the sidebar and off-screen. `MasterDetail` scrolls the newly selected panel
+  into view, which is a no-op in the side-by-side layout, so one code path
+  serves both.
+
+**Tablet**, per PRD §23, needed no new code: windows are retained with the menu
+bar, and dragging was already gated behind a fine pointer. Confirmed in the
+browser both ways — `hasTouch` tablets get windows without dragging, mouse
+tablets get both.
+
+**Verified** at 320, 375 and 414px: no horizontal overflow, nav fits with
+targets of at least 44px, exactly one view on screen, opening replaces rather
+than stacks, back returns home, About reachable, and no console errors.
+
+Deep linking, programmatic focus on window open, and the full keyboard and
+screen-reader pass remain Phase 5.

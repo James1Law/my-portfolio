@@ -255,6 +255,50 @@ describe("windowReducer", () => {
     expect(state.windows.about.position).toEqual(before);
   });
 
+  describe("activateSolo (the mobile model)", () => {
+    const solo = (state: DesktopState, id: AppId) =>
+      windowReducer(state, { type: "activateSolo", id, workspace });
+
+    it("opens the requested app", () => {
+      const state = solo(createInitialState(workspace), "projects");
+      expect(state.windows.projects.isOpen).toBe(true);
+      expect(frontmostApp(state)).toBe("projects");
+    });
+
+    it("replaces the previous view rather than stacking on it", () => {
+      let state = solo(createInitialState(workspace), "projects");
+      state = solo(state, "skills");
+      expect(state.windows.projects.isOpen).toBe(false);
+      expect(frontmostApp(state)).toBe("skills");
+    });
+
+    it("keeps Welcome open underneath, so back always lands somewhere", () => {
+      const state = solo(createInitialState(workspace), "experience");
+      expect(state.windows.welcome.isOpen).toBe(true);
+      expect(openApps(state).toSorted()).toEqual(["experience", "welcome"]);
+    });
+
+    it("closing the active app falls back to Welcome", () => {
+      let state = solo(createInitialState(workspace), "experience");
+      state = windowReducer(state, { type: "close", id: "experience" });
+      expect(frontmostApp(state)).toBe("welcome");
+    });
+
+    it("activating Welcome closes everything else", () => {
+      let state = solo(createInitialState(workspace), "contact");
+      state = solo(state, "welcome");
+      expect(openApps(state)).toEqual(["welcome"]);
+      expect(frontmostApp(state)).toBe("welcome");
+    });
+
+    it("re-activating the current app is a no-op, not a reset", () => {
+      const first = solo(createInitialState(workspace), "skills");
+      const again = solo(first, "skills");
+      expect(openApps(again)).toEqual(openApps(first));
+      expect(frontmostApp(again)).toBe("skills");
+    });
+  });
+
   it("minimises every open window at once", () => {
     let state = open(createInitialState(workspace), "about");
     state = open(state, "projects");

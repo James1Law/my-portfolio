@@ -3,7 +3,13 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Dock } from "@/components/desktop/Dock";
 import { PortfolioWindow } from "@/components/desktop/PortfolioWindow";
-import { APPS, APP_ORDER, DEFAULT_OPEN } from "@/lib/window-config";
+import { DesktopIcons } from "@/components/desktop/DesktopIcon";
+import {
+  APPS,
+  APP_ORDER,
+  DEFAULT_OPEN,
+  DESKTOP_ICONS,
+} from "@/lib/window-config";
 import { renderInDesktop } from "./test-utils";
 
 describe("Dock", () => {
@@ -86,5 +92,38 @@ describe("Dock", () => {
     expect(
       screen.getByRole("region", { name: "Projects" })
     ).not.toHaveAttribute("inert");
+  });
+});
+
+describe("DesktopIcons", () => {
+  it("opens an application when its wallpaper shortcut is clicked", async () => {
+    const user = userEvent.setup();
+    renderInDesktop(
+      <>
+        <DesktopIcons />
+        <PortfolioWindow id="contact">Contact content</PortfolioWindow>
+      </>
+    );
+
+    expect(screen.getByRole("region", { name: "Contact James" })).toHaveAttribute(
+      "inert"
+    );
+
+    await user.click(screen.getByRole("button", { name: "Contact" }));
+    expect(
+      screen.getByRole("region", { name: "Contact James" })
+    ).not.toHaveAttribute("inert");
+  });
+
+  it("mirrors the Dock rather than cluttering the desktop", () => {
+    renderInDesktop(<DesktopIcons />);
+    const shortcuts = screen.getAllByRole("button");
+    expect(shortcuts.length).toBeGreaterThan(0);
+    expect(shortcuts.length).toBeLessThanOrEqual(5);
+    for (const id of DESKTOP_ICONS) {
+      expect(
+        screen.getByRole("button", { name: APPS[id].dockLabel })
+      ).toBeInTheDocument();
+    }
   });
 });

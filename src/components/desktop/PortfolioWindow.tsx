@@ -47,13 +47,12 @@ export function PortfolioWindow({
   const titleId = useId();
   const reduceMotion = useReducedMotion();
 
-  const isMobile = device.mode === "mobile";
   const isVisible = window.isOpen && !window.isMinimised;
   const isFrontmost = frontmost === id;
 
-  // Dragging needs a pointer worth dragging with; touch gets full-bleed views.
-  const canDrag =
-    !isMobile && !window.isMaximised && device.pointerFine;
+  // Dragging needs a pointer worth dragging with. A touch tablet keeps windows
+  // but not dragging (PRD §23); mobile doesn't come through here at all.
+  const canDrag = !window.isMaximised && device.pointerFine;
 
   const drag = useDrag({
     origin: window.position,
@@ -63,8 +62,7 @@ export function PortfolioWindow({
   });
 
   const fitted = fitSize(config.size, workspace);
-  const fullBleed = window.isMaximised || isMobile;
-  const rect = fullBleed
+  const rect = window.isMaximised
     ? {
         left: workspace.left,
         top: workspace.top,
@@ -90,7 +88,8 @@ export function PortfolioWindow({
       aria-labelledby={titleId}
       data-app={id}
       data-frontmost={isFrontmost || undefined}
-      className="absolute"
+      // The layer above is pointer-events-none; each window opts back in.
+      className="pointer-events-auto absolute"
       style={{ ...rect, zIndex: window.zIndex }}
       initial={false}
       animate={target}
@@ -118,10 +117,8 @@ export function PortfolioWindow({
           <WindowControls
             title={config.title}
             onClose={() => closeWindow(id)}
-            // Minimise and maximise have no meaning in the single-view mobile
-            // model, so they are absent rather than decorative (PRD §22).
-            onMinimise={isMobile ? undefined : () => minimiseWindow(id)}
-            onMaximise={isMobile ? undefined : () => toggleMaximise(id)}
+            onMinimise={() => minimiseWindow(id)}
+            onMaximise={() => toggleMaximise(id)}
           />
           <WindowTitle id={titleId}>{config.title}</WindowTitle>
         </WindowTitlebar>

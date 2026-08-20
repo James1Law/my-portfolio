@@ -70,6 +70,7 @@
 /* Only applies the Dock's magnification on devices with a real pointer, so a tap
    doesn't leave a sticky hover transform behind (PRD §21). */
 @custom-variant pointer-fine (@media (hover: hover) and (pointer: fine));
+@custom-variant pointer-coarse (@media (pointer: coarse));
 
 body {
   background: #0b4c9e;

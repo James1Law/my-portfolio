@@ -18,6 +18,9 @@ import {
   type Size,
 } from "./window-config";
 
+/** The view the mobile shell falls back to, and never closes. */
+export const HOME_APP: AppId = "welcome";
+
 /** The usable area, with the menu bar and Dock already excluded. */
 export interface Workspace {
   left: number;
@@ -42,6 +45,7 @@ export interface DesktopState {
 
 export type WindowAction =
   | { type: "open"; id: AppId; workspace: Workspace }
+  | { type: "activateSolo"; id: AppId; workspace: Workspace }
   | { type: "close"; id: AppId }
   | { type: "minimise"; id: AppId }
   | { type: "restore"; id: AppId }
@@ -228,6 +232,22 @@ export function windowReducer(
         }),
         action.id
       );
+    }
+
+    case "activateSolo": {
+      // The mobile model shows one application at a time: opening one replaces
+      // whatever was on screen (PRD §22). Welcome stays open underneath as the
+      // home view, so closing an app always lands somewhere.
+      let next = windowReducer(state, {
+        type: "open",
+        id: action.id,
+        workspace: action.workspace,
+      });
+      for (const id of openApps(next)) {
+        if (id === action.id || id === HOME_APP) continue;
+        next = windowReducer(next, { type: "close", id });
+      }
+      return next;
     }
 
     case "close":
