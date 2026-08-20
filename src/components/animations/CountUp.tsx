@@ -11,7 +11,9 @@ interface CountUpProps {
 export function CountUp({ value, duration = 1.5 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [display, setDisplay] = useState("0");
+  // Starts at the real value, so the number is correct in the served HTML and
+  // for anyone who never triggers the animation (PRD §15).
+  const [display, setDisplay] = useState(value);
 
   // Extract the numeric part and any prefix/suffix (e.g. "5,500" -> 5500, "5+" -> 5)
   const numericString = value.replace(/[^0-9.]/g, "");
@@ -23,10 +25,7 @@ export function CountUp({ value, duration = 1.5 }: CountUpProps) {
   const hasCommas = value.includes(",");
 
   useEffect(() => {
-    if (!isInView || isNaN(targetNumber)) {
-      setDisplay(value);
-      return;
-    }
+    if (!isInView || isNaN(targetNumber)) return;
 
     const startTime = performance.now();
     const isInteger = Number.isInteger(targetNumber);

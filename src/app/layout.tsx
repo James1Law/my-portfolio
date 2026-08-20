@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "James Law | Product Leader & Builder",
@@ -36,20 +27,21 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#0b4c9e",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
-      <body className="min-h-screen bg-bg-primary text-text-primary">
-        <ThemeProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
-      </body>
+    <html lang="en-GB" className="antialiased">
+      {/* The desktop owns the viewport and never scrolls as a document. */}
+      <body className="h-dvh overflow-hidden">{children}</body>
     </html>
   );
 }

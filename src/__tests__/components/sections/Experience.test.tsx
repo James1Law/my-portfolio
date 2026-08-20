@@ -1,12 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Experience } from "@/components/sections/Experience";
 import { experiences } from "@/lib/data";
 
-vi.mock("next-themes", () => ({
-  useTheme: () => ({ theme: "dark", setTheme: vi.fn() }),
-}));
 
 describe("Experience", () => {
   it("renders with id='experience'", () => {

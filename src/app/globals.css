@@ -1,84 +1,189 @@
 @import "tailwindcss";
 
-/* Dark mode first - dark is default, .light class overrides */
+/* ---------------------------------------------------------------------------
+   Aqua theme — from the `@aqua/theme` registry item (MIT), vendored because the
+   registry host is unreachable from CI. Everything gel-shaped is derived from
+   --aqua-accent via color-mix, so one line rethemes the whole interface.
+   --------------------------------------------------------------------------- */
+
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: #161616;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent: #38bdf8;
-  --accent-dim: rgba(56, 189, 248, 0.15);
-  --accent-green: #4ade80;
-  --accent-purple: #a78bfa;
-  --accent-orange: #fb923c;
-  --border: #222222;
-  --border-light: #2a2a2a;
+  --aqua-accent: #2f7de0;
 }
 
-.light {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f8f8;
-  --bg-card: #f3f4f6;
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-muted: #888888;
-  --accent: #0284c7;
-  --accent-dim: rgba(2, 132, 199, 0.1);
-  --accent-green: #16a34a;
-  --accent-purple: #7c3aed;
-  --accent-orange: #ea580c;
-  --border: #e5e7eb;
-  --border-light: #d1d5db;
+*,
+*::before,
+*::after {
+  --aqua-gel-hi: color-mix(in oklab, var(--aqua-accent) 38%, white);
+  --aqua-gel-light: color-mix(in oklab, var(--aqua-accent) 62%, white);
+  --aqua-gel-mid: color-mix(in oklab, var(--aqua-accent) 90%, white);
+  --aqua-gel-deep: color-mix(in oklab, var(--aqua-accent) 85%, black);
+  --aqua-edge: color-mix(in oklab, var(--aqua-accent) 72%, black);
+  --aqua-ring: color-mix(in oklab, var(--aqua-accent) 55%, white);
+}
+
+:root {
+  --background: #eef0f3;
+  --foreground: #33383f;
+  --card: #f7f8fa;
+  --card-foreground: #33383f;
+  --popover: #f7f8fa;
+  --popover-foreground: #33383f;
+  --primary: #2f7de0;
+  --primary-foreground: #ffffff;
+  --secondary: #e4e7ec;
+  --secondary-foreground: #3a3f47;
+  --muted: #e4e7ec;
+  --muted-foreground: #7a8089;
+  --accent: #d5e6fb;
+  --accent-foreground: #1c5fb8;
+  --destructive: #e03a2f;
+  --border: #aeb3bc;
+  --input: #aeb3bc;
+  --ring: #6cb0f7;
 }
 
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-bg-card: var(--bg-card);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
+  /* Era-appropriate stack. No proprietary font files are shipped (PRD §25). */
+  --font-sans: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Verdana,
+    sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
-  --color-accent-dim: var(--accent-dim);
-  --color-accent-green: var(--accent-green);
-  --color-accent-purple: var(--accent-purple);
-  --color-accent-orange: var(--accent-orange);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
   --color-border: var(--border);
-  --color-border-light: var(--border-light);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
+/* Only applies the Dock's magnification on devices with a real pointer, so a tap
+   doesn't leave a sticky hover transform behind (PRD §21). */
+@custom-variant pointer-fine (@media (hover: hover) and (pointer: fine));
+
+/* ---------------------------------------------------------------------------
+   Legacy token aliases. The outgoing scrolling-page components still reference
+   the previous dark-first palette; these keep them compiling and legible until
+   Phase 3 replaces them. Delete this block with the last of those components.
+   --------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-bg-primary: #eef0f3;
+  --color-bg-secondary: #e4e7ec;
+  --color-bg-card: #f7f8fa;
+  --color-text-primary: #33383f;
+  --color-text-secondary: #5b6169;
+  --color-text-muted: #7a8089;
+  --color-accent-dim: rgba(47, 125, 224, 0.12);
+  --color-accent-green: #2f8f3f;
+  --color-accent-purple: #6a58c9;
+  --color-accent-orange: #c2661d;
+  --color-border-light: #c4c8d0;
+}
+
+/* --------------------------------------------------------------------------- */
+
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-inter, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  background: #0b4c9e;
+  color: var(--foreground);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll behaviour */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection colour */
 ::selection {
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--aqua-gel-light);
+  color: #ffffff;
 }
 
-/* Gradient heading text — high contrast in both themes */
-.hero-gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* The desktop is an application surface, not a document: it owns the viewport
+   and never scrolls as a page. */
+.aqua-desktop {
+  background-color: #0b4c9e; /* fallback beneath the wallpaper */
+  background-image: url("/aqua-wallpaper.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-.light .hero-gradient-text {
-  background: linear-gradient(135deg, #0a0a0a 0%, #333333 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Narrow viewports get a crop weighted towards the calmer upper band rather than
+   a squashed version of the full composition (PRD §8). */
+@media (max-width: 767px) {
+  .aqua-desktop {
+    background-position: 62% top;
+  }
+}
+
+/* Era textures, kept here so windows and panels can share them. */
+@utility aqua-pinstripe {
+  background-image: repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.55) 0px,
+      rgba(255, 255, 255, 0.55) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 4px
+    ),
+    linear-gradient(180deg, #f7f8fa 0%, #eceef2 100%);
+}
+
+@utility aqua-brushed {
+  background-image: repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.5) 0px,
+      rgba(255, 255, 255, 0.5) 1px,
+      rgba(0, 0, 0, 0.028) 1px,
+      rgba(0, 0, 0, 0.028) 2px
+    ),
+    linear-gradient(180deg, #f2f3f5 0%, #d9dbdf 52%, #cfd2d6 100%);
+}
+
+/* Replaces upstream Aqua's tailwindcss-animate classes on menus and tooltips. */
+.aqua-fade {
+  animation: aqua-fade-in 120ms ease-out;
+}
+
+.aqua-fade[data-state="closed"] {
+  animation: aqua-fade-out 90ms ease-in forwards;
+}
+
+@keyframes aqua-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aqua-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* PRD §29 — motion is decoration here; every behaviour works without it. */
+@media (prefers-reduced-motion: reduce) {
+  .aqua-fade,
+  .aqua-fade[data-state="closed"] {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

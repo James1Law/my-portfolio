@@ -1,10 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Hero } from "@/components/sections/Hero";
 
-vi.mock("next-themes", () => ({
-  useTheme: () => ({ theme: "dark", setTheme: vi.fn() }),
-}));
 
 describe("Hero", () => {
   it("renders with id='hero'", () => {
