@@ -364,3 +364,60 @@ npm run build
 
 All three green, plus: no TypeScript errors, no console errors, no hydration warnings. The
 clock is the one obvious hydration trap — render it client-only after mount.
+
+---
+
+## 11. Implementation notes — Phases 1 and 2
+
+Recorded as built, so later phases don't re-derive these.
+
+**Confirmed against the real packages**
+
+- `lucide-react@1.7.0` does export `CheckIcon`, `ChevronRightIcon` and
+  `CircleIcon`, so Aqua's `dropdown-menu` vendors unchanged. The risk flagged in
+  §5 is closed.
+- Upstream Aqua pinned at `d72926188b9b`. Vendored: `window`, `dock`, `button`,
+  `badge`, `dropdown-menu`, `cursor`. `tooltip` waits for Phase 3, when something
+  actually uses it.
+
+**Forks made, and why**
+
+1. `TrafficLights` → `WindowControls`: three real buttons with labels of the form
+   `Close Experience`. Upstream's gel styling is reused verbatim.
+2. `DockItem` → `<button>`, label revealed on hover *or* focus, magnification
+   behind a `pointer-fine` custom variant.
+3. Upstream's `tailwindcss-animate` classes on menus swapped for a local
+   `.aqua-fade`, rather than adding the plugin for one transition.
+
+**Decisions taken during the build**
+
+- **A window's left edge never leaves the workspace.** The original plan only
+  guaranteed `MIN_TITLEBAR_VISIBLE` on either side; in the browser that let a
+  window be dragged left until its close, minimise and maximise controls were
+  off-screen — reachable but not usable. The right edge may still overhang.
+- **Closed windows use `inert`, not `hidden`.** `hidden` applied a frame before
+  the close animation ran, so windows blinked out. `inert` keeps content in the
+  HTML for crawlers while removing it from the tab order and the accessibility
+  tree, which was the actual goal.
+- **`createInitialState` stacks by `DEFAULT_OPEN` order, not `APP_ORDER`**, so the
+  last window listed is the one in front.
+- **Opening positions are pulled fully on screen**; only dragging may overhang.
+- `CountUp` now starts at its real value rather than `"0"` — it was the one
+  pre-existing lint error on `main`, and the fix is what §15 wanted anyway.
+
+**Interim, not final**
+
+- **Mobile** (`< 768px`) currently renders one full-bleed, undraggable window with
+  the menu bar hidden and a scaled-down Dock: no overflow at 320px, 44px targets,
+  close-only controls. The designed mobile shell is still Phase 4.
+- **`DEFAULT_OPEN` opens Experience as well as Welcome** so the review build shows
+  window overlap without a click. Phase 3 restores `["welcome"]` per PRD §12.
+- Deep linking, programmatic focus management and the full keyboard pass remain
+  Phase 5 as planned.
+
+**Open question for Phase 3**
+
+`data.ts` marks MSC Cruises (Maritime Support Officer) as `era: "product"`, so it
+groups under Product in the sidebar, while PRD §16 lists it under Maritime. The
+data is the existing record and hasn't been touched; Phase 3 needs a decision on
+which grouping is right.
