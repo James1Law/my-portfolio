@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Desktop } from "@/components/desktop/Desktop";
 import { APPS, APP_ORDER, MOBILE_NAV } from "@/lib/window-config";
@@ -66,7 +66,8 @@ describe("MobileShell", () => {
 
   it("does not render the desktop menu bar", () => {
     render(<Desktop apps={apps} />);
-    expect(screen.queryByRole("menubar")).toBeNull();
+    // The menu bar is a banner landmark; mobile navigates from the Dock instead.
+    expect(screen.queryByRole("banner")).toBeNull();
   });
 
   it("shows Welcome as the home view on arrival", () => {
@@ -166,6 +167,22 @@ describe("MobileShell", () => {
   it("renders no draggable window chrome", () => {
     const { container } = render(<Desktop apps={apps} />);
     expect(container.querySelector(".touch-none")).toBeNull();
+  });
+
+  it("honours a deep link without breaking the one-app-at-a-time model", async () => {
+    window.history.replaceState(null, "", "/#projects");
+    render(<Desktop apps={apps} />);
+
+    await waitFor(() => expect(activeView()).toHaveAccessibleName("Projects"));
+    // Welcome stays open as the fallback; nothing else does.
+    const open = APP_ORDER.filter(
+      (id) =>
+        !screen
+          .getByRole("region", { name: APPS[id].title, hidden: true })
+          .hasAttribute("inert") ||
+        id === "welcome"
+    );
+    expect(open.toSorted()).toEqual(["projects", "welcome"]);
   });
 
   it("keeps every application's content in the document", () => {

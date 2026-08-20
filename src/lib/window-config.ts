@@ -148,3 +148,19 @@ export const DESKTOP_ICONS: AppId[] = APP_ORDER.filter(
 export const MOBILE_NAV: AppId[] = APP_ORDER.filter(
   (id) => APPS[id].inMobileNav
 );
+
+/**
+ * Welcome is the default state, so it is the bare URL rather than a fragment —
+ * only the frontmost application needs representing (PRD §32).
+ */
+export const HOME_APP: AppId = "welcome";
+
+/** Resolves a URL fragment to an app. `#welcome` is accepted but never written. */
+export function appIdFromHash(hash: string): AppId | null {
+  const normalised = hash.startsWith("#") ? hash : `#${hash}`;
+  return APP_ORDER.find((id) => APPS[id].hash === normalised) ?? null;
+}
+
+export function hashForApp(id: AppId | null): string {
+  return id && id !== HOME_APP ? APPS[id].hash : "";
+}

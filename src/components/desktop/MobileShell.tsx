@@ -11,8 +11,8 @@ import {
 } from "@/components/aqua/window";
 import { MobileNav } from "./MobileNav";
 import { useWindowManager } from "./WindowManager";
-import { APPS, APP_ORDER, type AppId } from "@/lib/window-config";
-import { HOME_APP } from "@/lib/window-state";
+import { APPS, APP_ORDER, HOME_APP, type AppId } from "@/lib/window-config";
+import { useFocusRequest } from "@/lib/use-focus-request";
 import type { AppContent } from "./Desktop";
 
 /**
@@ -38,14 +38,17 @@ function MobileView({
   isActive: boolean;
   children: React.ReactNode;
 }) {
-  const { closeWindow } = useWindowManager();
+  const { closeWindow, focusRequest } = useWindowManager();
   const titleId = useId();
+  const focusRef = useFocusRequest(focusRequest, "window", id);
   const reduceMotion = useReducedMotion();
   const isHome = id === HOME_APP;
 
   return (
     <motion.section
+      ref={focusRef}
       aria-labelledby={titleId}
+      tabIndex={-1}
       data-app={id}
       data-active={isActive || undefined}
       inert={!isActive}

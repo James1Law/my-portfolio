@@ -165,6 +165,19 @@ describe("ProjectsApp", () => {
     expect(screen.getByRole("button", { name: priori.name })).toBeVisible();
   });
 
+  it("leaves the detail view on Escape", async () => {
+    const user = userEvent.setup();
+    render(<ProjectsApp />);
+
+    const priori = projects.find((p) => p.id === "priori")!;
+    await user.click(screen.getByRole("button", { name: priori.name }));
+    expect(screen.getByRole("group", { name: priori.name })).toBeVisible();
+
+    await user.keyboard("{Escape}");
+    // Back at the icon view, with focus returned to the tile that was opened.
+    expect(screen.getByRole("button", { name: priori.name })).toHaveFocus();
+  });
+
   it("keeps every project's description in the document", () => {
     render(<ProjectsApp />);
     for (const project of projects) {

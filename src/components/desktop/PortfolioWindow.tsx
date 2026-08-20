@@ -13,6 +13,7 @@ import { useWindowManager } from "./WindowManager";
 import { APPS, type AppId } from "@/lib/window-config";
 import { fitSize } from "@/lib/window-state";
 import { useDrag } from "@/lib/use-drag";
+import { useFocusRequest } from "@/lib/use-focus-request";
 import { cn } from "@/lib/utils";
 
 /**
@@ -40,11 +41,13 @@ export function PortfolioWindow({
     toggleMaximise,
     focusWindow,
     moveWindow,
+    focusRequest,
   } = useWindowManager();
 
   const window = state.windows[id];
   const config = APPS[id];
   const titleId = useId();
+  const focusRef = useFocusRequest(focusRequest, "window", id);
   const reduceMotion = useReducedMotion();
 
   const isVisible = window.isOpen && !window.isMinimised;
@@ -85,11 +88,15 @@ export function PortfolioWindow({
 
   return (
     <motion.section
+      ref={focusRef}
       aria-labelledby={titleId}
+      // Focusable programmatically, so opening a window lands the keyboard here
+      // and a screen reader announces which application it is.
+      tabIndex={-1}
       data-app={id}
       data-frontmost={isFrontmost || undefined}
       // The layer above is pointer-events-none; each window opts back in.
-      className="pointer-events-auto absolute"
+      className="pointer-events-auto absolute focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       style={{ ...rect, zIndex: window.zIndex }}
       initial={false}
       animate={target}

@@ -1,3 +1,4 @@
+import { beforeEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
 
 // Mock IntersectionObserver for motion/react's useInView
@@ -28,3 +29,9 @@ if (!window.matchMedia) {
     dispatchEvent: () => false,
   })) as unknown as typeof window.matchMedia;
 }
+
+// The window manager writes real history entries, which would otherwise leak
+// from one test to the next and pre-open an application.
+beforeEach(() => {
+  window.history.replaceState(null, "", "/");
+});

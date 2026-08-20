@@ -58,9 +58,12 @@ export function MenuBar() {
   const openWindows = openAppIds.filter((id) => !state.windows[id].isMinimised);
 
   return (
-    <div
-      role="menubar"
-      aria-label="JamesOS"
+    // Not role="menubar": that role expects menuitem children, and these are
+    // buttons that *open* menus (Radix gives them aria-haspopup). A banner
+    // landmark is both correct and useful to navigate to.
+    <header
+      data-slot="menu-bar"
+      aria-label="Menu bar"
       className="fixed inset-x-0 top-0 z-50 flex items-stretch justify-between border-b border-[#9aa0ab] bg-[linear-gradient(180deg,#fdfdfe_0%,#eceef2_100%)] px-2 text-[#2b2f36] shadow-[0_1px_0_rgba(255,255,255,0.7),0_1px_4px_rgba(20,30,50,0.18)]"
       style={{ height: MENU_BAR_HEIGHT }}
     >
@@ -137,6 +140,6 @@ export function MenuBar() {
       <div className="flex items-center pr-1 text-[13px]">
         <Clock />
       </div>
-    </div>
+    </header>
   );
 }

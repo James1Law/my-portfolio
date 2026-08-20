@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/aqua/button";
 import { cn } from "@/lib/utils";
 
@@ -29,11 +29,27 @@ export function ProjectBrowser({ items }: { items: BrowserItem[] }) {
     requestAnimationFrame(() => detailRef.current?.focus());
   };
 
-  const back = () => {
-    const returnTo = openId;
-    setOpenId(null);
-    requestAnimationFrame(() => tileRefs.current.get(returnTo ?? "")?.focus());
-  };
+  const back = useCallback(() => {
+    setOpenId((current) => {
+      if (current) {
+        requestAnimationFrame(() => tileRefs.current.get(current)?.focus());
+      }
+      return null;
+    });
+  }, []);
+
+  // Escape leaves the detail view, the same way it closes a menu (PRD §31).
+  useEffect(() => {
+    if (openId === null) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        back();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [openId, back]);
 
   return (
     <div className="@container flex h-full min-h-0 flex-col">

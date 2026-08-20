@@ -538,3 +538,55 @@ than stacks, back returns home, About reachable, and no console errors.
 
 Deep linking, programmatic focus on window open, and the full keyboard and
 screen-reader pass remain Phase 5.
+
+## 14. Implementation notes — Phase 5
+
+**Deep linking**
+
+`#about` `#experience` `#projects` `#skills` `#contact`, with Welcome as the bare
+URL — it is the default state, and only the frontmost application needs
+representing (PRD §32).
+
+- Launching an app pushes a history entry; focusing, closing or minimising a
+  window rewrites the current one, so Back steps between applications rather
+  than through every click. A `historyMode` ref carries that intent from the
+  action to the effect that writes the URL, with a "silent" mode for changes we
+  caused *from* the URL, which stops the two feeding each other.
+- Arrival and Back both go through `showApp`, which expresses "show this
+  application" for whichever model is running. A deep link on mobile therefore
+  lands in the same single-app state a tap would produce, rather than quietly
+  leaving two apps open.
+- Reading the URL had to be folded into the same effect as the first-viewport
+  layout pass: re-deriving the layout on its own discarded whatever the URL had
+  opened.
+
+**Focus management**
+
+A `focusRequest` in the window manager — `{ target, id, token }` — and a
+`useFocusRequest` hook that windows, Dock launchers and mobile views share.
+Opening an app moves focus into the window; closing one hands focus back to the
+Dock item that launched it. The token means re-launching the same app re-focuses
+it. Nothing is requested on arrival, so the page never steals focus. Programmatic
+focus only matches `:focus-visible` after keyboard interaction, so a mouse click
+moves focus without drawing a ring.
+
+**Accessibility corrections**
+
+- **`role="menubar"` was wrong and is gone.** That role expects `menuitem`
+  children; these are buttons that *open* menus, which Radix marks with
+  `aria-haspopup`. The menu bar is now a `<header>` banner landmark, which is
+  both correct and useful to navigate to. It carries `data-slot="menu-bar"` so
+  tests can target it without matching an application's own `<header>`.
+- Escape leaves the project detail view, the way it closes a menu, returning
+  focus to the tile that opened it.
+- Wallpaper shortcuts are a labelled list rather than loose buttons.
+- Windows are focusable programmatically (`tabIndex={-1}`) and announce their
+  application name via `aria-labelledby`.
+
+**Verified in the browser**: deep link on arrival, fragment written on launch,
+Back returning to the previous app, focus into the window and back to the Dock,
+Tab reaching the Dock, Enter launching, Escape closing menus and the project
+detail, a drawn focus ring, and — under `prefers-reduced-motion` — deep links,
+launching and Dock transitions all correct with magnification suppressed.
+
+136 tests. The command palette stays V2, as the PRD suggests.

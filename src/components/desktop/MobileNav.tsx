@@ -3,7 +3,8 @@
 import { Dock as AquaDock, DockItem } from "@/components/aqua/dock";
 import { AppIcon } from "@/components/icons/AppIcons";
 import { useWindowManager } from "./WindowManager";
-import { APPS, MOBILE_NAV } from "@/lib/window-config";
+import { APPS, MOBILE_NAV, type AppId } from "@/lib/window-config";
+import { useFocusRequest } from "@/lib/use-focus-request";
 
 /**
  * The Dock, reinterpreted as bottom navigation.
@@ -16,9 +17,27 @@ import { APPS, MOBILE_NAV } from "@/lib/window-config";
  * Five items, so the labels stay readable at 320px. About is reached from
  * Welcome instead.
  */
-export function MobileNav() {
-  const { frontmost, activateApp } = useWindowManager();
+function NavItem({ id }: { id: AppId }) {
+  const { frontmost, activateApp, focusRequest } = useWindowManager();
+  const focusRef = useFocusRequest(focusRequest, "dock", id);
 
+  return (
+    <DockItem
+      ref={focusRef as React.Ref<HTMLButtonElement>}
+      label={APPS[id].dockLabel}
+      active={frontmost === id}
+      alwaysShowLabel
+      onClick={() => activateApp(id)}
+      // 40px of icon plus the label keeps the whole control past the minimum
+      // target size in both directions.
+      className="min-w-[44px] flex-1 gap-0.5 px-0.5 py-0.5"
+    >
+      <AppIcon id={id} className="size-[40px] rounded-[10px]" />
+    </DockItem>
+  );
+}
+
+export function MobileNav() {
   return (
     <nav
       aria-label="Applications"
@@ -26,18 +45,7 @@ export function MobileNav() {
     >
       <AquaDock className="w-full justify-between gap-1 rounded-[18px] px-2 pb-1.5 pt-2">
         {MOBILE_NAV.map((id) => (
-          <DockItem
-            key={id}
-            label={APPS[id].dockLabel}
-            active={frontmost === id}
-            alwaysShowLabel
-            onClick={() => activateApp(id)}
-            // 44px of icon plus the label keeps the whole control past the
-            // minimum target size in both directions.
-            className="min-w-[44px] flex-1 gap-0.5 px-0.5 py-0.5"
-          >
-            <AppIcon id={id} className="size-[40px] rounded-[10px]" />
-          </DockItem>
+          <NavItem key={id} id={id} />
         ))}
       </AquaDock>
     </nav>

@@ -6,6 +6,18 @@ import { PortfolioWindow } from "@/components/desktop/PortfolioWindow";
 import { renderInDesktop } from "./test-utils";
 
 describe("MenuBar", () => {
+  it("is a banner landmark rather than a role=menubar over plain buttons", () => {
+    renderInDesktop(<MenuBar />);
+    // role="menubar" expects menuitem children; these are buttons that open
+    // menus, which Radix marks with aria-haspopup.
+    expect(screen.getByRole("banner")).toBeInTheDocument();
+    expect(screen.queryByRole("menubar")).toBeNull();
+    expect(screen.getByRole("button", { name: "Portfolio" })).toHaveAttribute(
+      "aria-haspopup",
+      "menu"
+    );
+  });
+
   it("renders the personal identity rather than an Apple mark", () => {
     renderInDesktop(<MenuBar />);
     expect(screen.getByRole("button", { name: "JL" })).toBeInTheDocument();

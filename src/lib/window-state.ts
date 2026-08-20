@@ -8,6 +8,7 @@ import {
   APPS,
   APP_ORDER,
   DEFAULT_OPEN,
+  HOME_APP,
   DOCK_RESERVED_HEIGHT,
   MENU_BAR_HEIGHT,
   MIN_TITLEBAR_VISIBLE,
@@ -17,9 +18,6 @@ import {
   type Point,
   type Size,
 } from "./window-config";
-
-/** The view the mobile shell falls back to, and never closes. */
-export const HOME_APP: AppId = "welcome";
 
 /** The usable area, with the menu bar and Dock already excluded. */
 export interface Workspace {
