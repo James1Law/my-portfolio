@@ -13,6 +13,7 @@ import { MobileNav } from "./MobileNav";
 import { useWindowManager } from "./WindowManager";
 import { APPS, APP_ORDER, HOME_APP, type AppId } from "@/lib/window-config";
 import { useFocusRequest } from "@/lib/use-focus-request";
+import { cn } from "@/lib/utils";
 import type { AppContent } from "./Desktop";
 
 /**
@@ -53,7 +54,10 @@ function MobileView({
       data-active={isActive || undefined}
       inert={!isActive}
       // Views are stacked, so an inactive one must not hold layout space.
-      className={isActive ? "flex min-h-0 flex-1" : "hidden"}
+      className={cn(
+        isActive ? "flex min-h-0 flex-1" : "hidden",
+        isHome && "aqua-enter-window"
+      )}
       initial={false}
       animate={isActive ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
       transition={

@@ -10,7 +10,7 @@ import {
   WindowTitlebar,
 } from "@/components/aqua/window";
 import { useWindowManager } from "./WindowManager";
-import { APPS, type AppId } from "@/lib/window-config";
+import { APPS, DEFAULT_OPEN, type AppId } from "@/lib/window-config";
 import { fitSize } from "@/lib/window-state";
 import { useDrag } from "@/lib/use-drag";
 import { useFocusRequest } from "@/lib/use-focus-request";
@@ -96,7 +96,12 @@ export function PortfolioWindow({
       data-app={id}
       data-frontmost={isFrontmost || undefined}
       // The layer above is pointer-events-none; each window opts back in.
-      className="pointer-events-auto absolute focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      className={cn(
+        "pointer-events-auto absolute focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+        // Only what is already on screen at first paint has an entrance; a
+        // closed window must not be animated into view (PRD §38).
+        DEFAULT_OPEN.includes(id) && "aqua-enter-window"
+      )}
       style={{ ...rect, zIndex: window.zIndex }}
       initial={false}
       animate={target}

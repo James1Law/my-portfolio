@@ -590,3 +590,53 @@ detail, a drawn focus ring, and — under `prefers-reduced-motion` — deep link
 launching and Dock transitions all correct with magnification suppressed.
 
 136 tests. The command palette stays V2, as the PRD suggests.
+
+## 12. Implementation notes — Phase 6
+
+**Icons redrawn for silhouette, not just style**
+
+At Dock size, Experience (ship's wheel) and Skills (interlocking cogs) were both
+a ring with lines radiating out of it — the same shape twice, in different
+colours. Redrawn so the silhouettes differ:
+
+- Experience: a thin outlined rim with spokes inside and grips standing off it.
+- Skills: a *filled* cog. Solid mass against an open rim is the distinction that
+  survives at 34px; a second outlined circle would not have been.
+- About: dropped the baseline under the figure, which read as a shelf.
+
+A spanner was tried for Skills first and abandoned — at that size it read as a
+torch.
+
+**First-paint entrance (PRD §38)**
+
+Wallpaper, then chrome, then the Welcome window: menu bar slides down, Dock
+slides up, Welcome scales from 0.97. Roughly 400ms end to end, no boot sequence.
+
+Done with CSS animations rather than motion's `initial`, deliberately. `initial`
+is serialised into the server HTML, so an entrance built that way ships
+`opacity: 0` on the Welcome window and leaves the headline invisible if hydration
+never happens. A CSS animation only overrides the resting state while it plays,
+so the copy is visible with no JavaScript at all. Verified: nothing settles below
+full opacity, closed windows stay invisible throughout, and under
+`prefers-reduced-motion` Welcome is fully opaque on the first frame.
+
+Only apps in `DEFAULT_OPEN` carry the class — animating a closed window's opacity
+from zero would flash all six on load.
+
+**Also in this phase**
+
+- An Aqua 404 at `not-found.tsx` — a window on the wallpaper that says what
+  happened and offers the way back, rather than a cryptic fake fault (PRD §40).
+  Titled "JamesOS", not "Finder": borrowing an Apple application name is the
+  unnecessary branding PRD §6 rules out.
+- One easter egg, Help → About this website: a system-information panel with the
+  build stack, the Aqua credit and an Apple disclaimer. `dialog` vendored for it,
+  with the same local-animation fork as the menus.
+- Wallpaper: a low-opacity light sweep across the upper field and slightly
+  stronger crests, for depth in the large calm area behind the windows.
+
+**Still open for Phase 7**
+
+Lighthouse against the PRD §34 targets, Safari and iOS Safari, and a keyboard-only
+walkthrough. The paint-cost risk in §8 — pinstripe gradients plus multi-layer
+shadows across six windows — has not been measured yet.

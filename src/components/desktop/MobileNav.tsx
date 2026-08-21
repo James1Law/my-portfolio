@@ -41,7 +41,7 @@ export function MobileNav() {
   return (
     <nav
       aria-label="Applications"
-      className="shrink-0 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1"
+      className="aqua-enter-dock shrink-0 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1"
     >
       <AquaDock className="w-full justify-between gap-1 rounded-[18px] px-2 pb-1.5 pt-2">
         {MOBILE_NAV.map((id) => (

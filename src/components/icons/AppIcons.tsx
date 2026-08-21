@@ -53,22 +53,29 @@ function Glyph({ id }: { id: AppId }) {
         </svg>
       );
     case "about":
-      // Person on a card.
+      // Person. The baseline this used to sit on read as a shelf, not a card.
       return (
         <svg {...common}>
-          <circle cx="16" cy="12" r="4.4" fill="rgba(255,255,255,0.35)" />
-          <path d="M7.4 26c0-4.6 3.9-7.4 8.6-7.4s8.6 2.8 8.6 7.4" />
-          <path d="M4 26h24" />
+          <circle cx="16" cy="11.6" r="4.6" fill="rgba(255,255,255,0.35)" />
+          <path d="M6.9 25.6c0-5.1 4.1-8.3 9.1-8.3s9.1 3.2 9.1 8.3" />
         </svg>
       );
     case "experience":
-      // Ship's wheel — eleven years at sea, then product.
+      // Ship's wheel — eleven years at sea, then product. A thin rim with
+      // handles standing off it, so the silhouette can't be mistaken for the
+      // cog next door: spokes inside, grips outside.
       return (
         <svg {...common}>
-          <circle cx="16" cy="16" r="8.2" />
-          <circle cx="16" cy="16" r="2.6" fill="rgba(255,255,255,0.4)" />
-          <path d="M16 4.6v3.2M16 24.2v3.2M4.6 16h3.2M24.2 16h3.2" />
-          <path d="M8.1 8.1l2.3 2.3M21.6 21.6l2.3 2.3M23.9 8.1l-2.3 2.3M10.4 21.6l-2.3 2.3" />
+          <path
+            d="M23.4 16h3.2M8.6 16H5.4M19.7 22.4l1.6 2.8M12.3 9.6L10.7 6.8M12.3 22.4l-1.6 2.8M19.7 9.6l1.6-2.8"
+            strokeWidth={2.6}
+          />
+          <circle cx="16" cy="16" r="7.4" strokeWidth={2.2} />
+          <path
+            d="M9 16h14M12.5 22.1L19.5 9.9M19.5 22.1L12.5 9.9"
+            strokeWidth={1.5}
+          />
+          <circle cx="16" cy="16" r="2.1" fill="rgba(255,255,255,0.45)" />
         </svg>
       );
     case "projects":
@@ -82,12 +89,24 @@ function Glyph({ id }: { id: AppId }) {
         </svg>
       );
     case "skills":
-      // Interlocking cogs.
+      // A cog, drawn solid. The wheel next door is an outline, so filled mass
+      // versus open rim keeps the two apart at Dock size — which a second
+      // ring-of-radiating-lines glyph did not.
       return (
-        <svg {...common}>
-          <circle cx="13" cy="13" r="5.4" fill="rgba(255,255,255,0.3)" />
-          <path d="M13 4.6v2.4M13 19v2.4M4.6 13h2.4M19 13h2.4M7.1 7.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 7.1l-1.7 1.7M8.8 17.2l-1.7 1.7" />
-          <circle cx="22.6" cy="22.6" r="3.4" fill="rgba(255,255,255,0.45)" />
+        <svg {...common} fill="currentColor" stroke="none">
+          {[0, 45, 90, 135].map((angle) => (
+            <rect
+              key={angle}
+              x="14.1"
+              y="5"
+              width="3.8"
+              height="22"
+              rx="1.4"
+              transform={`rotate(${angle} 16 16)`}
+            />
+          ))}
+          <circle cx="16" cy="16" r="7.6" />
+          <circle cx="16" cy="16" r="2.9" fill="rgba(10,40,90,0.55)" />
         </svg>
       );
     case "contact":
