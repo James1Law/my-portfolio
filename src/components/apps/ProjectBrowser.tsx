@@ -23,20 +23,30 @@ export function ProjectBrowser({ items }: { items: BrowserItem[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef(new Map<string, HTMLButtonElement>());
+  const returnTo = useRef<string | null>(null);
+  const mounted = useRef(false);
 
   const open = (id: string) => {
+    returnTo.current = id;
     setOpenId(id);
-    requestAnimationFrame(() => detailRef.current?.focus());
   };
 
-  const back = useCallback(() => {
-    setOpenId((current) => {
-      if (current) {
-        requestAnimationFrame(() => tileRefs.current.get(current)?.focus());
-      }
-      return null;
-    });
-  }, []);
+  const back = useCallback(() => setOpenId(null), []);
+
+  /**
+   * Focus follows the view change. This runs in an effect rather than a
+   * requestAnimationFrame callback: the effect fires once the DOM already
+   * reflects the new view, so the element being focused is no longer `hidden`
+   * and focus lands deterministically instead of racing a frame.
+   */
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
+    if (openId !== null) detailRef.current?.focus();
+    else tileRefs.current.get(returnTo.current ?? "")?.focus();
+  }, [openId]);
 
   // Escape leaves the detail view, the same way it closes a menu (PRD §31).
   useEffect(() => {

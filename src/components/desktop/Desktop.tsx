@@ -20,10 +20,11 @@ function Workspace({ apps }: { apps: AppContent }) {
   if (device.mode === "mobile") return <MobileShell apps={apps} />;
 
   const windows = (
-    // Above the wallpaper shortcuts (z-10), below the Dock (z-40) and the menu
-    // bar (z-50). The layer spans the whole workspace, so it must not swallow
-    // clicks where there is no window — otherwise it covers the desktop icons.
-    <div
+    // The workspace is the page's main landmark. It sits above the wallpaper
+    // shortcuts (z-10) and below the Dock (z-40) and menu bar (z-50), and spans
+    // the whole area — so it must not swallow clicks where there is no window,
+    // or it would cover the desktop icons.
+    <main
       className="pointer-events-none absolute inset-0 z-20"
       style={{ top: MENU_BAR_HEIGHT }}
     >
@@ -32,7 +33,7 @@ function Workspace({ apps }: { apps: AppContent }) {
           {apps[id]}
         </PortfolioWindow>
       ))}
-    </div>
+    </main>
   );
 
   return (
@@ -47,12 +48,29 @@ function Workspace({ apps }: { apps: AppContent }) {
   );
 }
 
+function DesktopFrame({ children }: { children: React.ReactNode }) {
+  const { device } = useWindowManager();
+
+  return (
+    <div
+      className="aqua-desktop relative h-dvh w-full overflow-hidden"
+      // Present only until the client knows the viewport. Paired with a
+      // narrow-viewport media query in globals.css, it means "small screen, and
+      // we haven't switched to the mobile shell yet" — the one moment a phone
+      // would otherwise paint desktop chrome.
+      data-first-paint={device.ready ? undefined : ""}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function Desktop({ apps }: { apps: AppContent }) {
   return (
-    <div className="aqua-desktop relative h-dvh w-full overflow-hidden">
-      <WindowManager>
+    <WindowManager>
+      <DesktopFrame>
         <Workspace apps={apps} />
-      </WindowManager>
-    </div>
+      </DesktopFrame>
+    </WindowManager>
   );
 }

@@ -45,7 +45,7 @@ export function WelcomeApp() {
 
       {/* The Dock is on every breakpoint; the menu bar is not, so the hint only
           names the Dock. */}
-      <p className="mt-5 text-[11px] text-[#7a8089]">
+      <p className="mt-5 text-[11px] text-[#565c64]">
         Open an application from the Dock below.
       </p>
     </section>

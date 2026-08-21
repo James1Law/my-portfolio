@@ -39,7 +39,11 @@ function Menu({
   bold?: boolean;
 }) {
   return (
-    <DropdownMenu>
+    // Not modal. A modal menu makes Radix mark the rest of the page
+    // aria-hidden, and the desktop behind it is full of focusable Dock items and
+    // window controls — announcing them as hidden while they stay focusable is a
+    // real violation. A menu bar is not a modal surface anyway.
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger className={cn(TRIGGER_CLASS, bold && "font-bold")}>
         {label}
       </DropdownMenuTrigger>
@@ -77,7 +81,7 @@ function AboutThisSite({
             JL
           </div>
           <DialogTitle className="text-[17px]">JamesOS</DialogTitle>
-          <p className="text-[12px] text-[#6b7483]">Version 2.0</p>
+          <p className="text-[12px] text-[#565c64]">Version 2.0</p>
         </DialogHeader>
 
         <div className="space-y-2 text-center text-[12px] leading-relaxed text-[#5b6169]">

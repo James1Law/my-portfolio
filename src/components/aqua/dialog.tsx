@@ -10,6 +10,10 @@
  * FORK — upstream's tailwindcss-animate classes are replaced with the local
  * `.aqua-fade` and `.aqua-zoom` in globals.css, so we don't take on the
  * plugin dependency for two transitions.
+ *
+ * FORK — muted text darkened from #7a8089 to #565c64. Upstream's grey is
+ * about 3.9:1 against these surfaces at 11-13px, below the 4.5:1 WCAG AA
+ * floor this project targets (PRD §26, §30).
  */
 "use client"
 
@@ -123,7 +127,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn("text-[13px] leading-5 text-[#7a8089]", className)}
+      className={cn("text-[13px] leading-5 text-[#565c64]", className)}
       {...props}
     />
   )

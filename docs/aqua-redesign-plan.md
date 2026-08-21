@@ -640,3 +640,94 @@ from zero would flash all six on load.
 Lighthouse against the PRD §34 targets, Safari and iOS Safari, and a keyboard-only
 walkthrough. The paint-cost risk in §8 — pinstripe gradients plus multi-layer
 shadows across six windows — has not been measured yet.
+
+## 13. Implementation notes — Phase 7 (QA)
+
+### Measured, against the PRD §34 targets
+
+| | Performance | Accessibility | Best practices | SEO |
+|---|---|---|---|---|
+| Target (mobile) | ≥ 90 | ≥ 95 | ≥ 95 | ≥ 95 |
+| **Mobile** | **94–96** | **100** | **100** | **100** |
+| **Desktop** | **100** | **100** | **100** | **100** |
+
+The paint-cost risk logged in §8 — pinstripe gradients plus multi-layer shadows
+across six windows — did not materialise. No mitigation was needed.
+
+### Defects found and fixed
+
+1. **A phone painted the desktop UI first.** The server can't know the viewport,
+   so it renders the desktop tree — which is what puts the portfolio copy in the
+   HTML. Under a 6× CPU throttle a phone showed a menu bar, wallpaper shortcuts
+   and a 700px-wide window for ~700ms before the mobile shell replaced it:
+   exactly the "tiny desktop UI" PRD §20 rules out. Fixed with a `data-first-paint`
+   marker plus a narrow-viewport media query, so that one pre-hydration frame
+   already looks like the mobile shell. Desktop is untouched.
+2. **A focus race in the project browser.** Focus restoration ran in a
+   `requestAnimationFrame` callback, so it raced the frame — which made its test
+   flaky (it passed at commit time and failed on the next run). Moved into an
+   effect, which fires once the DOM already reflects the new view. Three
+   consecutive clean runs.
+3. **Muted text failed WCAG AA.** `#7a8089` is ~3.9:1 on these surfaces at
+   11–13px, against a 4.5:1 floor; `#6b7483` failed on the sidebar gradient.
+   Both replaced with `#565c64`, which clears 4.5:1 on every background in play
+   (4.75:1 on the darkest). Two of the twelve were in vendored Aqua files, marked
+   as forks.
+4. **Window controls were under the minimum target size.** 21×21 against WCAG
+   2.2's 24×24. Now 24px, which leaves the 13px dots 11px apart rather than
+   upstream's 8px — accessibility outranks historical accuracy in the PRD's own
+   order (§51).
+5. **No `main` landmark.** The workspace is now `<main>` in both trees.
+6. **Menus aria-hid the desktop while it stayed focusable.** Radix's modal
+   dropdown marks the rest of the page `aria-hidden`, and the desktop behind is
+   full of focusable Dock items and window controls. `modal={false}` — a menu bar
+   is not a modal surface.
+7. **The detail panel had no focus indicator.** Radix makes the active tab panel
+   a tab stop, which is the pattern working as intended, so it needed a ring.
+
+### Accepted, with reasoning
+
+**axe reports `target-size` on a window control partially covered by the window
+in front of it** (16×24 of the 24×24 exposed). This is inherent to overlapping
+windows, which PRD §20 explicitly wants on desktop. Making the default cascade
+avoid it entirely would need every window's left edge 90px clear of every
+other's — around 450px of spread across six windows, which contradicts the
+positions §14 asks for, and a visitor dragging a window recreates the overlap
+anyway. Mitigations are real: keyboard access is unaffected, the exposed portion
+stays clickable, and one click anywhere on the window brings it forward and fully
+exposes its controls. Lighthouse — the gate the PRD names — scores 100.
+
+### Verified
+
+- Quality gates: lint, 144 tests, build.
+- Lighthouse desktop and mobile (above).
+- axe-core WCAG 2 A/AA + 2.1 + 2.2 across 15 states: every application, a project
+  detail, an open menu, the dialog, a maximised window, the 404, and mobile at
+  320px and 375px.
+- Keyboard only: tab order never enters an inert window; the menu bar, every Dock
+  app and every window control are reachable; Enter and Space launch; focus moves
+  into a window on open and back to its Dock item on close; Escape closes menus;
+  every tab stop shows a focus indicator.
+- Orientation: 390×844 → 844×390 → back. The model switches both ways, no window
+  is stranded off-screen, no horizontal overflow, no page errors.
+- Hydration: no warnings in a dev build at desktop or phone size. (Console shows
+  Next's HMR WebSocket failing — an artefact of this sandbox, not the app.)
+
+### Not verified — needs a real device
+
+**Safari and iOS Safari could not be tested.** This environment has Chromium
+only; no WebKit build is available and installing one is not permitted here. So
+PRD §49's "should work particularly well in Safari" is unverified.
+
+A static review found nothing exotic: the newest thing shipped is CSS
+`color-mix()` (Safari 16.2), alongside `dvh`, `inert`, container queries,
+`:focus-visible`, Pointer Events and `env(safe-area-inset-*)` — all supported
+from roughly Safari 16.2 onward. `toSorted` appears only in tests, never in
+shipped code. Three things still want eyes on real hardware:
+
+1. Gradient and shadow fidelity — the pinstripe `repeating-linear-gradient` and
+   the gel stacks are where Safari is most likely to band differently.
+2. `h-dvh` against the iOS dynamic toolbar, and `env(safe-area-inset-bottom)` on
+   a notched device, both under the mobile nav.
+3. Momentum scrolling inside window content, and `inert` in Safari's
+   accessibility tree with VoiceOver.

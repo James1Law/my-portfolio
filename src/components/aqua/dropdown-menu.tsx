@@ -10,6 +10,10 @@
  * FORK — upstream's tailwindcss-animate classes (animate-in/fade-in-0/...) are
  * replaced with `.aqua-fade`, implemented in globals.css, so we don't take on the
  * plugin dependency for one transition.
+ *
+ * FORK — muted text darkened from #7a8089 to #565c64. Upstream's grey is
+ * about 3.9:1 against these surfaces at 11-13px, below the 4.5:1 WCAG AA
+ * floor this project targets (PRD §26, §30).
  */
 "use client"
 
@@ -150,7 +154,7 @@ function DropdownMenuLabel({
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
       className={cn(
-        "px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#7a8089]",
+        "px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#565c64]",
         className
       )}
       {...props}

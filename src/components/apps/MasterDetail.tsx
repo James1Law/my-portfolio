@@ -76,7 +76,7 @@ export function MasterDetail({
           {groups.map((group, index) => (
             <Fragment key={group.label ?? index}>
               {group.label ? (
-                <p className="px-2 pb-1 pt-1.5 text-[10px] font-bold uppercase tracking-wider text-[#6b7483]">
+                <p className="px-2 pb-1 pt-1.5 text-[10px] font-bold uppercase tracking-wider text-[#565c64]">
                   {group.label}
                 </p>
               ) : null}
@@ -118,7 +118,14 @@ export function MasterDetail({
                 if (node) panels.current.set(item.id, node);
                 else panels.current.delete(item.id);
               }}
-              className="px-6 py-5 outline-none data-[state=inactive]:hidden"
+              // Radix makes the active panel a tab stop, which is the tabs
+              // pattern working as intended — so it needs a focus indicator.
+              // The outline is inset, or it would be clipped by the scroll
+              // container around it.
+              className={cn(
+                "px-6 py-5 data-[state=inactive]:hidden",
+                "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--aqua-ring)]"
+              )}
             >
               {item.detail}
             </TabsPrimitive.Content>

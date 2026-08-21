@@ -33,7 +33,7 @@
   --secondary: #e4e7ec;
   --secondary-foreground: #3a3f47;
   --muted: #e4e7ec;
-  --muted-foreground: #7a8089;
+  --muted-foreground: #565c64;
   --accent: #d5e6fb;
   --accent-foreground: #1c5fb8;
   --destructive: #e03a2f;
@@ -229,6 +229,47 @@ body {
   from {
     opacity: 0;
     transform: scale(0.97);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   First paint on a narrow viewport.
+
+   The server cannot know the viewport, so it renders the desktop tree — and it
+   has to, because that is what puts the portfolio copy in the HTML. Without
+   these rules a phone paints a menu bar, wallpaper shortcuts and a 700px-wide
+   window for as long as hydration takes: on a throttled device, most of a
+   second of exactly the "tiny desktop UI" the design rules out (PRD §20).
+
+   `data-first-paint` is removed the moment the client knows its viewport, and
+   the mobile shell renders none of these elements, so these rules only ever
+   apply to that one pre-hydration frame. The overrides need `!important`
+   because window geometry is inline style.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  [data-first-paint] header[aria-label="Menu bar"],
+  [data-first-paint] [data-slot="desktop-icons"],
+  [data-first-paint] [data-slot="dock-bar"] {
+    display: none;
+  }
+
+  /* One full-bleed window, which is what the mobile shell shows a frame later. */
+  [data-first-paint] main {
+    top: 0 !important;
+  }
+
+  [data-first-paint] section[data-app] {
+    inset: 0.5rem !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* The mobile shell keeps only the red control, so the handoff is seamless if
+     this frame shows the same one. Nothing is interactive yet either way. */
+  [data-first-paint] button[aria-label^="Minimise"],
+  [data-first-paint] button[aria-label^="Maximise"] {
+    display: none;
   }
 }
 

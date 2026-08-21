@@ -10,7 +10,7 @@ export function ContactApp() {
   return (
     <section className="flex h-full flex-col">
       <header className="shrink-0 border-b border-[#b6bcc6] bg-[linear-gradient(180deg,#fbfcfd_0%,#e9ecf1_100%)] px-5 py-2">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-[#6b7483]">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-[#565c64]">
           New message
         </p>
       </header>
@@ -52,7 +52,7 @@ export function ContactApp() {
           ) : null}
         </div>
 
-        <p className="mt-5 text-[11px] text-[#7a8089]">{contactInfo.email}</p>
+        <p className="mt-5 text-[11px] text-[#565c64]">{contactInfo.email}</p>
       </div>
     </section>
   );

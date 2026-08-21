@@ -81,10 +81,11 @@ function WindowControl({
       aria-label={label}
       className={cn(
         // The button *is* the target, rather than a 13px dot with an invisible
-        // pseudo-element over it: a real box can be measured and tested. At 21px
-        // with no gap between buttons, the dots still sit 8px apart, which is
-        // upstream's spacing exactly. Touch gets a larger box.
-        "inline-flex size-[21px] shrink-0 items-center justify-center rounded-full",
+        // pseudo-element over it: a real box can be measured and tested. 24px is
+        // the WCAG 2.2 minimum target size, which leaves the 13px dots 11px
+        // apart rather than upstream's 8px — accessibility outranks historical
+        // accuracy in the PRD's own priority order (§51). Touch gets more.
+        "inline-flex size-[24px] shrink-0 items-center justify-center rounded-full",
         "pointer-coarse:size-[30px]",
         "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-[#1c5fb8]",
         className

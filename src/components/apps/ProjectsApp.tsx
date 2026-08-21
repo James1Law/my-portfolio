@@ -26,7 +26,7 @@ function ProjectDetail({ project }: { project: Project }) {
         {project.description}
       </p>
 
-      <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-[#6b7483]">
+      <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-[#565c64]">
         Built with
       </h4>
       <ul className="mt-2 flex flex-wrap gap-1.5">

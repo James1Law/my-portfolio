@@ -18,7 +18,7 @@ function RoleDetail({ role }: { role: Experience }) {
       <p className="mt-0.5 text-[13px] font-semibold text-[#1c5fb8]">
         {role.company}
       </p>
-      <p className="mt-0.5 text-[12px] text-[#6b7483]">
+      <p className="mt-0.5 text-[12px] text-[#565c64]">
         {formatDateRange(role.startDate, role.endDate)}
       </p>
 
@@ -34,7 +34,7 @@ function RoleDetail({ role }: { role: Experience }) {
 
       {role.metrics.length > 0 ? (
         <>
-          <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-[#6b7483]">
+          <h4 className="mt-5 text-[11px] font-bold uppercase tracking-wider text-[#565c64]">
             Key outcomes
           </h4>
           <ul className="mt-2 flex flex-wrap gap-1.5">

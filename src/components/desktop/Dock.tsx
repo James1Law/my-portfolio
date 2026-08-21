@@ -33,7 +33,10 @@ function DockLauncher({ id }: { id: AppId }) {
  */
 export function Dock() {
   return (
-    <div className="aqua-enter-dock pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center pb-3">
+    <div
+      data-slot="dock-bar"
+      className="aqua-enter-dock pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center pb-3"
+    >
       <nav aria-label="Applications" className="pointer-events-auto">
         <AquaDock>
           {APP_ORDER.map((id) => (

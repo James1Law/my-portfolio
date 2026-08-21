@@ -20,7 +20,7 @@ export function AboutApp() {
           >
             JL
           </div>
-          <p className="text-center text-[11px] leading-tight text-[#6b7483]">
+          <p className="text-center text-[11px] leading-tight text-[#565c64]">
             JamesOS
             <br />
             Version 2.0
