@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="">
+  <title>Aqua-inspired blue desktop wallpaper</title>
+  <defs>
+    <!-- Deep water base: navy at the edges lifting to a bright horizon glow. -->
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#052a63"/>
+      <stop offset="38%" stop-color="#0b4c9e"/>
+      <stop offset="70%" stop-color="#1668c6"/>
+      <stop offset="100%" stop-color="#0a3f86"/>
+    </linearGradient>
+
+    <!-- Optimistic bloom behind where the Welcome window sits. -->
+    <radialGradient id="bloom" cx="50%" cy="22%" r="62%">
+      <stop offset="0%" stop-color="#bfe4ff" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#6fb4f5" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#0b4c9e" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="ribbonA" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0%" stop-color="#eaf6ff" stop-opacity="0.00"/>
+      <stop offset="35%" stop-color="#dff0ff" stop-opacity="0.30"/>
+      <stop offset="70%" stop-color="#9fd4ff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#7ec2ff" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <linearGradient id="ribbonB" x1="1" y1="0" x2="0" y2="0.6">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.00"/>
+      <stop offset="40%" stop-color="#cfeaff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#4f9fe8" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <linearGradient id="ribbonC" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0a2f6b" stop-opacity="0.42"/>
+      <stop offset="60%" stop-color="#0d47a0" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#1668c6" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <linearGradient id="sweep" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#dcefff" stop-opacity="0.00"/>
+      <stop offset="45%" stop-color="#dcefff" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#a9d4ff" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <linearGradient id="crest" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.00"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <radialGradient id="vignette" cx="50%" cy="42%" r="78%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#001433" stop-opacity="0.42"/>
+    </radialGradient>
+
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="softer" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="48"/>
+    </filter>
+    <filter id="hairline" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#base)"/>
+  <rect width="1600" height="1000" fill="url(#bloom)"/>
+
+  <!-- Abstract curves, weighted low and to the sides so window content stays legible. -->
+  <g filter="url(#soft)">
+    <path d="M -160 742 C 250 566, 528 908, 902 700 C 1236 514, 1430 762, 1780 604 L 1780 1120 L -160 1120 Z" fill="url(#ribbonA)"/>
+    <path d="M -160 880 C 320 742, 700 986, 1080 838 C 1360 728, 1540 862, 1780 790 L 1780 1120 L -160 1120 Z" fill="url(#ribbonC)"/>
+  </g>
+
+  <g filter="url(#softer)">
+    <path d="M -220 96 C 180 214, 470 128, 760 268 C 1010 388, 1240 316, 1500 420 C 1620 468, 1710 470, 1820 452 L 1820 -80 L -220 -80 Z" fill="url(#sweep)"/>
+    <path d="M 1780 168 C 1420 250, 1300 470, 980 452 C 700 436, 560 296, 240 356 C 100 382, -40 350, -160 300 L -160 -80 L 1780 -80 Z" fill="url(#ribbonB)"/>
+  </g>
+
+  <!-- Thin specular crests give the curves their early-2000s three-dimensional lift. -->
+  <g filter="url(#hairline)" fill="none" stroke-linecap="round">
+    <path d="M -120 736 C 260 566, 530 900, 900 694 C 1230 512, 1428 754, 1760 598" stroke="url(#crest)" stroke-width="2.5"/>
+    <path d="M -120 806 C 300 664, 620 940, 1010 774 C 1320 640, 1520 810, 1760 716" stroke="url(#crest)" stroke-width="1.6" opacity="0.7"/>
+  </g>
+
+  <rect width="1600" height="1000" fill="url(#vignette)"/>
+</svg>

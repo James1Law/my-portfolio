@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
     startDate: "Nov 2025",
     description:
       "Leading strategy and delivery for the Crewing platform. Overseeing product vision, roadmap, and execution across compliance, HR, payroll, and workforce planning.",
-    era: "product",
+    group: "product",
     metrics: [
       { label: "people across 2 teams", value: "18" },
       { label: "ARR target by end-2026", value: "$2M" },
@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
     endDate: "Nov 2025",
     description:
       "Built the Chartering platform 0→1 — an end-to-end voyage management solution. Shaped it from concept to production across three major shipping companies.",
-    era: "product",
+    group: "product",
     metrics: [
       { label: "product build", value: "0→1" },
       { label: "users", value: "150+" },
@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     endDate: "Sep 2022",
     description:
       "Led the digital transformation of customer-facing services for a major UK water utility.",
-    era: "product",
+    group: "product",
     metrics: [],
   },
   {
@@ -72,7 +72,7 @@ export const experiences: Experience[] = [
     endDate: "Apr 2022",
     description:
       "Introduced Agile across five development teams. Drove Scrum adoption, improving delivery predictability and stakeholder transparency.",
-    era: "product",
+    group: "product",
     metrics: [{ label: "dev teams transformed", value: "5" }],
   },
   {
@@ -83,7 +83,7 @@ export const experiences: Experience[] = [
     endDate: "Aug 2021",
     description:
       "Managed a portfolio of B2B/B2C maritime SaaS products. Led the ground-up rebuild of the flagship compliance platform and a major enterprise rollout.",
-    era: "product",
+    group: "product",
     metrics: [
       { label: "ships (Carnival Corp)", value: "120+" },
       { label: "deal value", value: "£2M+" },
@@ -98,7 +98,7 @@ export const experiences: Experience[] = [
     endDate: "Jan 2020",
     description:
       "Shore-based fleet operations for 17 cruise ships. First responder for the MSC Opera Venice incident — coordinated the full emergency response across multiple stakeholders.",
-    era: "product",
+    group: "maritime",
     metrics: [{ label: "ships monitored", value: "17" }],
   },
   {
@@ -109,7 +109,7 @@ export const experiences: Experience[] = [
     endDate: "2018",
     description:
       "Progressed from Cadet to Senior 2nd Officer across 11 years. Responsible for the safety of 5,500 passengers on 330m vessels through extreme weather, emergencies, and complex navigation.",
-    era: "sea",
+    group: "maritime",
     metrics: [
       { label: "passengers", value: "5,500" },
       { label: "vessel", value: "330m" },
@@ -189,20 +189,7 @@ export const skills: Skill[] = [
   { name: "Financial Services", category: "domain" },
 ];
 
-export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-] as const;
 
-export const heroSubtitles = [
-  "Head of Product",
-  "Product Leader",
-  "Builder",
-  "Former Senior Officer",
-];
 
 export const aboutStats = [
   { value: "11", label: "Years at sea", color: "blue" as const },

@@ -31,9 +31,19 @@ describe("Portfolio Data", () => {
       expect(current?.title).toBe("Head of Product");
     });
 
-    it("includes sea career", () => {
-      const sea = experiences.filter((e) => e.era === "sea");
-      expect(sea.length).toBeGreaterThan(0);
+    it("includes the maritime career", () => {
+      const maritime = experiences.filter((e) => e.group === "maritime");
+      expect(maritime.length).toBeGreaterThan(0);
+      // Both the sea-going role and the shore-based maritime one (PRD §16).
+      expect(maritime.map((e) => e.company)).toEqual(
+        expect.arrayContaining(["Princess Cruises", "MSC Cruises"])
+      );
+    });
+
+    it("groups every role as either product or maritime", () => {
+      for (const role of experiences) {
+        expect(["product", "maritime"]).toContain(role.group);
+      }
     });
   });
 

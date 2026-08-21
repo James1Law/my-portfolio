@@ -1,10 +1,10 @@
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Experience } from "@/components/sections/Experience";
-import { Projects } from "@/components/sections/Projects";
-import { Skills } from "@/components/sections/Skills";
-import { Contact } from "@/components/sections/Contact";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { Desktop, type AppContent } from "@/components/desktop/Desktop";
+import { WelcomeApp } from "@/components/apps/WelcomeApp";
+import { AboutApp } from "@/components/apps/AboutApp";
+import { ExperienceApp } from "@/components/apps/ExperienceApp";
+import { ProjectsApp } from "@/components/apps/ProjectsApp";
+import { SkillsApp } from "@/components/apps/SkillsApp";
+import { ContactApp } from "@/components/apps/ContactApp";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -21,34 +21,28 @@ const jsonLd = {
   },
 };
 
+/**
+ * Stays a server component. Each application's content is rendered here and
+ * handed to the client shell, so the portfolio copy is in the initial HTML
+ * rather than appearing after hydration (PRD §33, §44).
+ */
 export default function Home() {
+  const apps: AppContent = {
+    welcome: <WelcomeApp />,
+    about: <AboutApp />,
+    experience: <ExperienceApp />,
+    projects: <ProjectsApp />,
+    skills: <SkillsApp />,
+    contact: <ContactApp />,
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
-      <hr className="mx-auto max-w-5xl border-t border-border" />
-      <ScrollReveal>
-        <About />
-      </ScrollReveal>
-      <hr className="mx-auto max-w-5xl border-t border-border" />
-      <ScrollReveal delay={0.1}>
-        <Experience />
-      </ScrollReveal>
-      <hr className="mx-auto max-w-5xl border-t border-border" />
-      <ScrollReveal delay={0.1}>
-        <Projects />
-      </ScrollReveal>
-      <hr className="mx-auto max-w-5xl border-t border-border" />
-      <ScrollReveal delay={0.1}>
-        <Skills />
-      </ScrollReveal>
-      <hr className="mx-auto max-w-5xl border-t border-border" />
-      <ScrollReveal delay={0.1}>
-        <Contact />
-      </ScrollReveal>
+      <Desktop apps={apps} />
     </>
   );
 }

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/aqua",
+    "lib": "@/lib",
+    "utils": "@/lib/utils",
+    "hooks": "@/lib/hooks"
+  },
+  "registries": {
+    "@aqua": "https://aqua.duca.dev/r/{name}.json"
+  }
+}
